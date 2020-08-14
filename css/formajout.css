@@ -1,0 +1,57 @@
+body {
+	width: 100%;
+}
+
+form {
+	width: fit-content;
+	display: block;
+	margin: auto;
+}
+
+.radio {
+	margin-right: 0;
+}
+
+input[type=radio]{
+	margin: 0 1em 0 0;
+	width: auto;
+}
+
+h1 {
+	width: 100%;
+	text-align: center;
+}
+
+label {
+	width: 9vw;
+	display: inline-block;
+}
+
+input, select {
+	width: 10vw;
+	display: inline-block;
+	margin-right: 4vw;
+}
+
+.autre {
+	width: 4vw;
+	display: inline-block;
+}
+
+input[type=text] {
+	margin-right: 0;
+
+}
+
+input, select, label {
+	margin-bottom: 0.8em;
+}
+
+div {
+	display: flex;
+}
+
+div > input {
+	width: 25%;
+	margin: auto;
+}

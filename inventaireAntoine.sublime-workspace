@@ -1,0 +1,1529 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"margin",
+				"margin\tproperty"
+			],
+			[
+				"font",
+				"font-size\tproperty"
+			],
+			[
+				"fl",
+				"float\tproperty"
+			],
+			[
+				"echo",
+				"echo\techo \"…\""
+			],
+			[
+				"quant",
+				"quant_fin"
+			],
+			[
+				"qunat",
+				"quant_fin"
+			],
+			[
+				"_",
+				"_POST"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"quna",
+				"quantite"
+			],
+			[
+				"arra",
+				"array"
+			],
+			[
+				"reque",
+				"request_sortie.php"
+			],
+			[
+				"h",
+				"h2\tTag"
+			],
+			[
+				"unset",
+				"session_unset"
+			],
+			[
+				"produ",
+				"productDataAsArray"
+			],
+			[
+				"mysqli",
+				"mysqli_fetch"
+			],
+			[
+				"if",
+				"if\tif …"
+			],
+			[
+				"utf8",
+				"utf8_encode"
+			],
+			[
+				"a",
+				"a\t<a href=\"mailto:\"> "
+			],
+			[
+				"pro",
+				"productDataAsArray"
+			],
+			[
+				"mar",
+				"margin-right\tproperty"
+			],
+			[
+				"array",
+				"array\t$… = array (…)"
+			],
+			[
+				"ana",
+				"analysetableau.php"
+			],
+			[
+				"input",
+				"input\tTag"
+			],
+			[
+				"from",
+				"form\tTag"
+			],
+			[
+				"is",
+				"isset"
+			],
+			[
+				"form",
+				"form\tTag"
+			],
+			[
+				"data",
+				"data"
+			],
+			[
+				"array_key",
+				"array_key_exists"
+			],
+			[
+				"date",
+				"date"
+			],
+			[
+				"non",
+				"nonvendu"
+			],
+			[
+				"canvas",
+				"canvas\tTag"
+			],
+			[
+				"meta",
+				"meta\tTag"
+			],
+			[
+				"me",
+				"meta\t<meta name=\"\" content=\"\">"
+			],
+			[
+				"d",
+				"do\tdo … while …"
+			],
+			[
+				"p",
+				"php\t<?php … ?>"
+			],
+			[
+				"html",
+				"htmlspecialchars"
+			],
+			[
+				"lab",
+				"label\tTag"
+			],
+			[
+				"select",
+				"select\tTag"
+			],
+			[
+				"va",
+				"value\tAttr"
+			],
+			[
+				"sele",
+				"select\tTag"
+			],
+			[
+				"op",
+				"option\tTag"
+			],
+			[
+				"legen",
+				"legend\tTag"
+			],
+			[
+				"sub",
+				"substr"
+			],
+			[
+				"isa",
+				"is_array"
+			],
+			[
+				"session",
+				"session_start"
+			],
+			[
+				"bor",
+				"border-radius\tproperty"
+			],
+			[
+				"bord",
+				"border-radius\tproperty"
+			],
+			[
+				"padding",
+				"padding\tproperty"
+			],
+			[
+				"ba",
+				"background-color\tproperty"
+			],
+			[
+				"co",
+				"cover\tbackground-size"
+			],
+			[
+				"b",
+				"bold\tfont-weight"
+			],
+			[
+				"td",
+				"td\ttext-decoration: ${1:none};"
+			],
+			[
+				"colum",
+				"column-width\tproperty"
+			],
+			[
+				"th",
+				"th\tTag"
+			],
+			[
+				"back",
+				"background-color\tproperty"
+			],
+			[
+				"Re",
+				"Ref"
+			],
+			[
+				"min",
+				"min-width\tproperty"
+			],
+			[
+				"max",
+				"max-width\tproperty"
+			],
+			[
+				"marg",
+				"margin\tproperty"
+			],
+			[
+				"text",
+				"text-align\tproperty"
+			],
+			[
+				"bd",
+				"BD-gymnase.html"
+			],
+			[
+				"conta",
+				"Contact.html"
+			],
+			[
+				"po",
+				"python1.html"
+			],
+			[
+				"con",
+				"Contact.html"
+			],
+			[
+				"py",
+				"python2.html"
+			],
+			[
+				"BD-",
+				"BD-gymnase.html"
+			],
+			[
+				"qui",
+				"Quiz.html"
+			],
+			[
+				"Quiz",
+				"Quiz.html"
+			],
+			[
+				"font-",
+				"font-size\tproperty"
+			],
+			[
+				"inline",
+				"inline-block\tdisplay"
+			],
+			[
+				"inli",
+				"inline-block\tdisplay"
+			],
+			[
+				"paddin",
+				"padding\tproperty"
+			],
+			[
+				"TEXT",
+				"text-align\tproperty"
+			],
+			[
+				"u",
+				"uppercase\ttext-transform"
+			],
+			[
+				"font-s",
+				"font-style\tproperty"
+			],
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"tex",
+				"text-align\tproperty"
+			],
+			[
+				"re",
+				"reveal"
+			],
+			[
+				"list",
+				"list-style\tproperty"
+			],
+			[
+				"Projet",
+				"ProjetFutur"
+			],
+			[
+				"li",
+				"li\tTag"
+			],
+			[
+				"on",
+				"onclick\tAttr"
+			],
+			[
+				"he",
+				"height\tproperty"
+			],
+			[
+				"backgr",
+				"background-image\tproperty"
+			],
+			[
+				"m",
+				"margin\tproperty"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"margi",
+				"margin-top\tproperty"
+			],
+			[
+				"te",
+				"text-align\tproperty"
+			],
+			[
+				"pa",
+				"padding\tproperty"
+			],
+			[
+				"background",
+				"background-color\tproperty"
+			],
+			[
+				"margin-",
+				"margin-right\tproperty"
+			],
+			[
+				"t",
+				"tbody\tTag"
+			],
+			[
+				"border",
+				"border\tproperty"
+			],
+			[
+				"c",
+				"colspan\tAttr"
+			],
+			[
+				"border-co",
+				"border-collapse\tproperty"
+			],
+			[
+				"wi",
+				"width\tproperty"
+			],
+			[
+				"bold",
+				"bolder\tfont-weight"
+			],
+			[
+				"bl",
+				"black"
+			],
+			[
+				"magin",
+				"margin-bottom\tproperty"
+			],
+			[
+				"col",
+				"color\tproperty"
+			],
+			[
+				"bol",
+				"bolder\tfont-weight"
+			],
+			[
+				"l",
+				"label\tTag"
+			],
+			[
+				"opt",
+				"optgroup\tTag"
+			],
+			[
+				"spe",
+				"spectaclechaine"
+			],
+			[
+				"specat",
+				"spectacle"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"aff",
+				"afficheTab2D"
+			],
+			[
+				"tab",
+				"tabfiltre"
+			],
+			[
+				"affiche",
+				"afficheEntete"
+			],
+			[
+				"etudaint",
+				"etudiants"
+			],
+			[
+				"arr",
+				"array"
+			],
+			[
+				"array_k",
+				"array_key_exists"
+			],
+			[
+				"moy",
+				"moyenne"
+			],
+			[
+				"di",
+				"display\tproperty"
+			],
+			[
+				"padd",
+				"padding\tproperty"
+			],
+			[
+				"in",
+				"input\tTag"
+			],
+			[
+				"text-de",
+				"text-decoration-line\tproperty"
+			],
+			[
+				"image",
+				"list-style-image\tproperty"
+			],
+			[
+				"im",
+				"image-rendering\tproperty"
+			],
+			[
+				"lower",
+				"lower-latin\tlist-style-type"
+			],
+			[
+				"upp",
+				"upper-latin\tlist-style-type"
+			],
+			[
+				"type",
+				"list-style-type\tproperty"
+			],
+			[
+				"rep",
+				"repeat-y\tbackground-repeat"
+			],
+			[
+				"bak",
+				"background-image\tproperty"
+			],
+			[
+				"txa",
+				"text-align\tproperty"
+			],
+			[
+				"text-a",
+				"text-align\tproperty"
+			],
+			[
+				"i",
+				"italic\tfont-style"
+			],
+			[
+				"met",
+				"meta\tTag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "css/formajout.css",
+			"settings":
+			{
+				"buffer_size": 548,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "formajout.php",
+			"settings":
+			{
+				"buffer_size": 4910,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "recherche.php",
+			"settings":
+			{
+				"buffer_size": 1987,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "connexion.php",
+			"settings":
+			{
+				"buffer_size": 269,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "ajout.php",
+			"settings":
+			{
+				"buffer_size": 1258,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"live",
+				"Snippet: Insert livereload.js script"
+			],
+			[
+				"LiveReload: Enable/disable plugins",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"quote",
+				"ChangeQuotes"
+			],
+			[
+				"livereloa",
+				"Snippet: Create new LiveReload plugin"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"livereload",
+				"Snippet: Insert livereload.js script"
+			],
+			[
+				"pasckage control i",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Build: Cancel"
+			],
+			[
+				"Install Package Control",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/InventaireAntoine"
+	],
+	"file_history":
+	[
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/App/Site_Web/Site_projet/css/Contact.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/App/Site_Web/Site_projet/site_perso/Site_perso_Alexandre/style.css",
+		"/C/Users/alexa/Desktop/php/InventaireAntoine/recherche.php",
+		"/C/Users/alexa/Desktop/php/InventaireAntoine/connexion.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/InventaireAntoine/formajout.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/InventaireAntoine/test.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/InventaireAntoine/connexion.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/InventaireAntoine/ajout.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/InventaireAntoine/index.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/InventaireAntoine/recherche.php",
+		"/C/Users/alexa/Desktop/php/TP PHP/TP3/DetailsPersonne.php",
+		"/C/Users/alexa/Desktop/php/TP PHP/TP3/qui.php",
+		"/C/Users/alexa/Desktop/php/TP PHP/TP3/SelectionPersonne.php",
+		"/C/Users/alexa/Desktop/php/TP PHP/TP3/SaisiePersonne.php",
+		"/C/Users/alexa/Desktop/php/TP PHP/TP3/ListerCoursV2.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/TP PHP/TP3/ListerCours.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/connexionBD.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/request_sortie.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/choix_suppr.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/Sortie.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/request_entree.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/PHP.sublime-project",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/Entree.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/Recherche.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/index.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/Version test/request_ajout.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/Version test/Ajout.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/Version test/index.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/request_suppr.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/Suppr.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/request_ajout.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/Ajout.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/openfoodfacts/openfoodfacts-php/composer.json",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/autoload.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/composer/autoload_real.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/openfoodfacts-php-master/README.md",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/response.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/openfoodfacts/openfoodfacts-php/src/Api.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/guzzlehttp/guzzle/README.md",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/openfoodfacts/openfoodfacts-php/examples/00_flat_request/request.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/request.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/openfoodfacts/openfoodfacts-php/src/Collection.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/openfoodfacts/openfoodfacts-php/src/Document.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/openfoodfacts/openfoodfacts-php/phpunit.xml",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/openfoodfacts/openfoodfacts-php/src/Document/FoodDocument.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/openfoodfacts-php-master/examples/00_flat_request/request.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Inventaire/vendor/composer/ClassLoader.php",
+		"/C/composer/composer.phar",
+		"/C/composer/composer.bat",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/openfoodfacts-php-master/composer.json",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-dashboard/index.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-dashboard/conf_httpserver.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-dashboard/conf_dbserver.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/openfoodfacts-php-master/doc/home.md",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/openfoodfacts-laravel-master/README.md",
+		"/C/Users/alexa/Desktop/Sans titre-1.html",
+		"/C/Users/alexa/Desktop/alternance 2(2018-2019).css",
+		"/C/Users/alexa/Desktop/DUT STID/en.openfoodfacts.org.products.csv",
+		"/C/Users/alexa/Downloads/The Sims 4 [anadius Repack]/hash/hash.md5",
+		"/C/Users/alexa/Downloads/The Sims 4 [anadius Repack]/_setup-1.60.54.1020.exe",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/App/Site_Web/Site_projet/html/VerifQuiz.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/App/Site_Web/Site_projet/css/VerifQuiz.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/App/Site_Web/Site_projet/html/Contact.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/App/index.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/App/Site_Web/Site_projet/css/style-index.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/App/Site_Web/Site_projet/html/Quiz.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/App/Site_Web/Site_projet/site_perso/Site_perso_Alexandre/index.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/App/Site_Web/Site_projet/css/Quiz.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/index.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/Menu/js/classie.js",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/analyse.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/affichage.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Site_projet/html/BD-chat.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Site_projet/html/BD-gymnase.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Site_projet/html/python1.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Site_projet/html/Contact.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Site_projet/css/style-index.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Site_projet/css/projet_python.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Site_projet/html/python2.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Site_projet/html/Quiz.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Site_projet/html/Contact.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Site_projet/css/projet_BD.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/css/rapportbiens.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/css/rapport.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/css/analysetableau.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/analysetableau.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/analyseevolution.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/analyseventes.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/connexion/connexion.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/css/affichage.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/analysebiens.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/rechercheCible.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/rechercheAgent.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/modification.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/index.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/css/rechercheCible.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/html/analyseevolution3.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/css/modification.css",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/Site_Web/Appli_web_immo/css/rechercheAgent.css",
+		"/C/Users/alexa/Desktop/partie_affichage.php",
+		"/C/Users/alexa/Desktop/connexion.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/TP PHP/Examen/prixweekend.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/TP PHP/Examen/connexion.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/TP PHP/Examen/sesMissions.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/TP PHP/Examen/prestataires.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/TP PHP/Examen/missionsNord.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/TP PHP/Examen/weekend.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Test/Graph/prop_nbvente.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Projet-Transversale/test.html",
+		"/C/Users/alexa/Desktop/Chart.PieceLabel.js-master/samples/demo/index.html",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Test/Graph/prix_moyen.php",
+		"/C/Users/alexa/Desktop/eds-www - Raccourci.lnk",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/TP3/ListerCours.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/menu web/Menu/connexion/test.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/menu web/Menu/connexion/deconnexion.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/menu web/Menu/connexion/connexion.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/menu web/Menu/index.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/menu web/Menu/connexion/inscription.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/Test Connexion/inscription.php",
+		"/C/Program Files (x86)/EasyPHP-Devserver-17/eds-www/menu web/Menu/connexionBD.php",
+		"/C/Users/alexa/Desktop/menu web/Menu/css/contenu-index.css",
+		"/C/Users/alexa/Desktop/menu web/Menu/css/menu+titre.css",
+		"/C/Users/alexa/Desktop/menu web/Menu/index.php",
+		"/C/Users/alexa/Desktop/menu web/Menu/index.html",
+		"/C/Users/alexa/Desktop/DUT STID/Github/Projet-Transversale/MenuDeroulant.html",
+		"/C/Users/alexa/Desktop/google-nexus/js/gnmenu.js",
+		"/C/Users/alexa/Desktop/google-nexus/js/classie.js",
+		"/C/Users/alexa/Desktop/google-nexus/css/menu+titre.css"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"select",
+			"code",
+			"',$",
+			"inventaire",
+			"Inventaire",
+			"https",
+			"$url",
+			"getproduct",
+			"openf",
+			"php5",
+			"$conf_httpserver",
+			"$conf_",
+			"$conf_php",
+			"span",
+			"          responsive: true,",
+			"for=\"\"",
+			"chart-area",
+			"test.php",
+			"flex",
+			"selected",
+			"after",
+			"#57A9F5",
+			"57A9F5",
+			"membres",
+			"membre_",
+			"gn-icon-pictures",
+			";\n",
+			"<br/>",
+			"label",
+			"<br/><br/>",
+			"class=\"questionx2\"",
+			"<br />",
+			"flex"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "css/formajout.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 548,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								317,
+								317
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										338,
+										339
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										278,
+										279
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "formajout.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4910,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								912,
+								912
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										929,
+										930
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/double_quote.png",
+										"region.greenish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										910,
+										911
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 144.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "recherche.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1987,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1389,
+								1389
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1933,
+										1934
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1182,
+										1183
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 432.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "connexion.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 269,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5,
+								5
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "ajout.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1258,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1204,
+								1204
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1223,
+										1224
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/single_quote.png",
+										"region.greenish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1193,
+										1194
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content"
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 324.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "inventaireAntoine.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 258.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
