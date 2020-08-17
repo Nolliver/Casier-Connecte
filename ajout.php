@@ -35,19 +35,26 @@
 				}
 			}
 
-			$query='INSERT INTO produits VALUES ('.$id.',"'.$var['nom'].'","'.$var['emplacement'].'","'.$categorie.'","'.$var['sous_categorie'].'","'.$longueur.'","'.$quantite.'","'.$var['taille'].'","'.$var['type'].'","'.$var['nom_icone'].'")';
+			$sql ='INSERT INTO produits VALUES ('.$id.',"'.$var['nom'].'","'.$var['emplacement'].'","'.$categorie.'","'.$var['sous_categorie'].'","'.$longueur.'","'.$quantite.'","'.$var['taille'].'","'.$var['type'].'","'.$var['nom_icone'].'")';
 			
 
-			$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+			$bdd -> prepare($sql);
+			$nb = $bdd -> exec($sql);
 
-			mysqli_close($connexion); 
 
-
-			echo '<div class="container h-100 d-flex justify-content-center">
-    				<div class="jumbotron my-auto">
-    					<h1 class="text-center display-3">Ajout Réussi !</h1>
-    				</div>
-    			</div>';
+			if ($nb == 1) {
+				echo '<div class="container h-100 d-flex justify-content-center">
+	    				<div class="jumbotron my-auto">
+	    					<h1 class="text-center display-3">Ajout Réussi !</h1>
+	    				</div>
+	    			</div>';
+			} else {
+				echo '<div class="container h-100 d-flex justify-content-center">
+	    				<div class="jumbotron my-auto">
+	    					<h1 class="text-center display-3">Un problème est survenu<br>Veuillez réessayer</h1>
+	    				</div>
+	    			</div>';
+			}
 
 			header('Refresh: 1, URL=formajout.php');
 			exit();

@@ -27,10 +27,12 @@
 						<label>Categorie: </label>
 						<div class="form-group">
 							<?php 
-								$query='select distinct categorie from produits order by categorie;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql = 'SELECT distinct categorie from produits order by categorie;';
 
-								$ligne = mysqli_fetch_assoc($result);
+								$req = $bdd -> prepare($sql);
+								$req -> execute();
+
+								$ligne = $req -> fetch(PDO::FETCH_ASSOC);
 								echo "	<div class='input-group mb-3'>
 										  <div class='input-group-prepend'>
 										    <div class='input-group-text'>
@@ -41,11 +43,11 @@
 										</div>";
 
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								while ($ligne = $req -> fetch(PDO::FETCH_ASSOC)) {
 									echo "	<div class='input-group mb-3'>
 										  <div class='input-group-prepend'>
 										    <div class='input-group-text'>
-										      <input type='radio' name='categorie' value='".$ligne['categorie']."' checked id='for_".$ligne['categorie']."'>
+										      <input type='radio' name='categorie' value='".$ligne['categorie']."'id='for_".$ligne['categorie']."'>
 										    </div>
 										  </div>
 										  <label for='for_".$ligne['categorie']."' class='form-control'>".$ligne['categorie']."</label>
@@ -62,10 +64,9 @@
 						<label>Sous-categorie </label>
 						<select name="sous_categorie" class="form-control">
 							<?php 
-								$query='select distinct sous_categorie from produits order by sous_categorie;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct sous_categorie from produits order by sous_categorie;';
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<option value='".$ligne['sous_categorie']."'>".$ligne['sous_categorie']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
@@ -84,10 +85,9 @@
 						<label>Nom </label>
 						<select name="nom" class="form-control">
 							<?php 
-								$query='select distinct nom from produits order by nom;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct nom from produits order by nom;';
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<option value='".$ligne['nom']."'>".$ligne['nom']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
@@ -106,10 +106,9 @@
 						<label>Taille </label>
 						<select name="taille" class="form-control">
 							<?php 
-								$query='select distinct taille from produits order by taille;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct taille from produits order by taille;';
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<option value='".$ligne['taille']."'>".$ligne['taille']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
@@ -134,10 +133,9 @@
 						<label>Type </label>
 						<select name="type" class="form-control">
 							<?php 
-								$query='select distinct type from produits order by type;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct type from produits order by type;';
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<option value='".$ligne['type']."'>".$ligne['type']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
@@ -156,10 +154,9 @@
 						<label>Nom de l'image </label>
 						<select name="nom_icone" class="form-control">
 							<?php 
-								$query='select distinct nom_icone from produits order by nom_icone;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct nom_icone from produits order by nom_icone;';
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<option value='".$ligne['nom_icone']."'>".$ligne['nom_icone']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
@@ -177,11 +174,10 @@
 						<label>Emplacement: </label>
 						<select name="emplacement" class="form-control">
 							<?php 
-								$query='select distinct emplacement from produits order by emplacement;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct emplacement from produits order by emplacement;';
 
 								$i=0;
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne) {
 									$tab_emp[$i]=$ligne['emplacement'];
 									$i = $i + 1;
 								}
@@ -204,9 +200,11 @@
 				<input type="hidden" name="quantite" value='1'>
 
 				<?php 
-					$query='select id from produits order by id desc limit 1;';
-					$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
-					$ligne = mysqli_fetch_assoc($result);
+					$sql='SELECT id from produits order by id desc limit 1;';
+
+					$req = $bdd -> prepare($sql);
+					$req -> execute();
+					$ligne = $req -> fetch(PDO::FETCH_ASSOC);
 
 					$id = $ligne['id'] + 1;
 				 ?>
@@ -219,7 +217,6 @@
 					 <input type="reset" class="form-control offset-md-2 col-md-5">
 				</div>
 			</form>
-			<?php mysqli_close($connexion);  ?>
 		</div>
 	</div>
 
