@@ -12,8 +12,7 @@
 </head>
 <body>
 	<div class="container">
-		<?php include('connexion.php'); 
-		?>
+		<?php require 'connexion.php' ;?>
 
 		<div class="row col-md-12">
 			<h1 class="text-center col-md-12 display-4">Ajout dans la base de données</h1>
@@ -216,6 +215,7 @@
 					 <input type="submit" value="Ajouter" class="form-control col-md-5">
 					 <input type="reset" class="form-control offset-md-2 col-md-5">
 				</div>
+
 			</form>
 		</div>
 	</div>
