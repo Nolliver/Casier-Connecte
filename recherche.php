@@ -19,12 +19,12 @@
 			if (!isset($_GET['categorie'])){
 				//Recherche des catégories
 
-					$sql='SELECT distinct categorie from produits order by categorie;';
+					$sql='SELECT id, libelle from categorie order by libelle;';
 
 				// Affichage des catégories
 
 					foreach ($bdd -> query($sql) as $ligne) {
-						echo "<a href='recherche.php?categorie=".$ligne['categorie']."'>".$ligne['categorie']."</a><br/>";
+						echo "<a href='recherche.php?categorie=".$ligne['id']."'>".$ligne['libelle']."</a><br/>";
 					}
 			}
 
