@@ -19,12 +19,12 @@
 			if (!isset($_GET['categorie'])){
 				//Recherche des catégories
 
-					$sql='SELECT distinct categorie from produits order by categorie;';
+					$sql='SELECT id, libelle from categorie order by libelle;';
 
 				// Affichage des catégories
 
 					foreach ($bdd -> query($sql) as $ligne) {
-						echo "<a href='recherche.php?categorie=".$ligne['categorie']."'>".$ligne['categorie']."</a><br/>";
+						echo "<a href='recherche.php?categorie=".$ligne['id']."'>".$ligne['libelle']."</a><br/>";
 					}
 			}
 
@@ -49,13 +49,15 @@
 					$sql = 'SELECT * from produits where categorie="'.$_GET['categorie'].'" and sous_categorie = "'.$_GET['sous_categorie'].'" order by nom, type, taille, longueur;';
 
 				// Affichage des sous-catégories
-					foreach ($bdd -> query($sql) as $ligne) {
-						$texte = '<p><img height=80px width=80px src="icone500px500px/'.$ligne['nom_icone'].'"> '.$ligne['nom'].' '.$ligne['taille'].' '.$ligne['type'];
-						if (!empty($ligne['longueur'])) {
-							$texte = $texte.' lg '.$ligne['longueur'].'mm';
+					echo "<table class='table table-striped'>";
+						foreach ($bdd -> query($sql) as $ligne) {
+							$texte = '<tr><td><img height=80px width=80px src="icone500px500px/'.$ligne['nom_icone'].'"></td><td class="align-middle"> '.$ligne['nom'].' '.$ligne['taille'].' '.$ligne['type'];
+							if (!empty($ligne['longueur'])) {
+								$texte = $texte.' lg '.$ligne['longueur'].'mm';
+							}
+							echo $texte." </td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='http://192.168.1.34/".$ligne['emplacement']."'>Voir l'emplacement</a></td></tr>";
 						}
-						echo $texte." <a href='http://192.168.1.34/".$ligne['emplacement']."'>Voir l'emplacement</a></p>";
-					}
+					echo "</table>";
 
 			}
  

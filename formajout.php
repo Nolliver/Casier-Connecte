@@ -11,9 +11,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">
-		<?php include('connexion.php'); 
-		?>
+	<div class="container mb-5">
+		<?php require 'connexion.php' ;?>
 
 		<div class="row col-md-12">
 			<h1 class="text-center col-md-12 display-4">Ajout dans la base de données</h1>
@@ -24,10 +23,10 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-12">
-						<label>Categorie: </label>
+						<label>Categorie </label>
 						<div class="form-group">
 							<?php 
-								$sql = 'SELECT distinct categorie from produits order by categorie;';
+								$sql = 'SELECT id, libelle from categorie order by libelle;';
 
 								$req = $bdd -> prepare($sql);
 								$req -> execute();
@@ -36,10 +35,10 @@
 								echo "	<div class='input-group mb-3'>
 										  <div class='input-group-prepend'>
 										    <div class='input-group-text'>
-										      <input type='radio' name='categorie' value='".$ligne['categorie']."' checked id='for_".$ligne['categorie']."'>
+										      <input type='radio' name='categorie' value='".$ligne['id']."' checked id='for_".$ligne['libelle']."'>
 										    </div>
 										  </div>
-										  <label for='for_".$ligne['categorie']."' class='form-control'>".$ligne['categorie']."</label>
+										  <label for='for_".$ligne['libelle']."' class='form-control'>".$ligne['libelle']."</label>
 										</div>";
 
 
@@ -47,10 +46,10 @@
 									echo "	<div class='input-group mb-3'>
 										  <div class='input-group-prepend'>
 										    <div class='input-group-text'>
-										      <input type='radio' name='categorie' value='".$ligne['categorie']."'id='for_".$ligne['categorie']."'>
+										      <input type='radio' name='categorie' value='".$ligne['id']."'id='for_".$ligne['libelle']."'>
 										    </div>
 										  </div>
-										  <label for='for_".$ligne['categorie']."' class='form-control'>".$ligne['categorie']."</label>
+										  <label for='for_".$ligne['libelle']."' class='form-control'>".$ligne['libelle']."</label>
 										</div>";
 
 								}
@@ -216,6 +215,7 @@
 					 <input type="submit" value="Ajouter" class="form-control col-md-5">
 					 <input type="reset" class="form-control offset-md-2 col-md-5">
 				</div>
+
 			</form>
 		</div>
 	</div>
