@@ -43,7 +43,7 @@
 
 
 			if ($nb == 1) {
-				echo '<div class="container h-100 d-flex justify-content-center">
+				echo '<div class="container h-100 justify-content-center">
 	    				<div class="jumbotron my-auto">
 	    					<h1 class="text-center display-3">Ajout Réussi !</h1>
 	    				</div>

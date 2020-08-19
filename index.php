@@ -12,8 +12,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<a href="formajout.php" class="col-sm-6 col-md-4 btn btn-outline-dark" role="button">Ajouter</a>
-			<a href="recherche.php" class="col-sm-6 col-md-4 btn btn-outline-dark" role="button">Rechercher</a>
+			<a href="formajout.php" class="col-md-4 btn btn-outline-dark" role="button">Ajouter</a>
+			<a href="recherche.php" class="col-md-4 btn btn-outline-dark" role="button">Rechercher</a>
 			<a href="#" class="col-sm-6 col-md-4 btn btn-outline-dark" role="button">Modifier</a>
 		</div>
 	</div>

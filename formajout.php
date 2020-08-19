@@ -63,10 +63,10 @@
 						<label>Sous-categorie </label>
 						<select name="sous_categorie" class="form-control">
 							<?php 
-								$sql='SELECT distinct sous_categorie from produits order by sous_categorie;';
+								$sql='SELECT id, libelle from sous_categorie order by libelle;';
 
 								foreach ($bdd -> query($sql) as $ligne) {
-									echo "<option value='".$ligne['sous_categorie']."'>".$ligne['sous_categorie']."</option>";
+									echo "<option value='".$ligne['id']."'>".$ligne['libelle']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
 							 ?>
