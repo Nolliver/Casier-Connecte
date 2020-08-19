@@ -8,13 +8,24 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<style type="text/css">
+		html, body{
+			height: 100%;
+		}
+	</style>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<a href="formajout.php" class="col-md-4 btn btn-outline-dark" role="button">Ajouter</a>
-			<a href="recherche.php" class="col-md-4 btn btn-outline-dark" role="button">Rechercher</a>
-			<a href="#" class="col-sm-6 col-md-4 btn btn-outline-dark" role="button">Modifier</a>
+	<div class="container h-100">
+		<div class='row h-100 align-items-center'>
+			<div class="col-sm-6 col-md-4 align-middle text-center" >
+				<a style='width: 8em' href="formajout.php" class="btn btn-outline-dark" role="button">Ajouter</a>
+			</div>
+			<div class="col-sm-6 col-md-4 align-middle text-center">
+				<a style='width: 8em' href="recherche.php" class="btn btn-outline-dark" role="button">Rechercher</a>
+			</div>
+			<div class="col-sm-6 col-md-4 align-middle text-center">
+				<a style='width: 8em' href="#" class="btn btn-outline-dark" role="button">Modifier</a>
+			</div>	
 		</div>
 	</div>
 </body>
