@@ -16,17 +16,41 @@
 </head>
 <body>
 	<div class="container h-100">
+
 		<div class='row h-100 align-items-center'>
-			<div class="col-sm-6 col-md-4 align-middle text-center" >
-				<a style='width: 8em' href="formajout.php" class="btn btn-outline-dark" role="button">Ajouter</a>
-			</div>
-			<div class="col-sm-6 col-md-4 align-middle text-center">
-				<a style='width: 8em' href="recherche.php" class="btn btn-outline-dark" role="button">Rechercher</a>
-			</div>
-			<div class="col-sm-6 col-md-4 align-middle text-center">
-				<a style='width: 8em' href="#" class="btn btn-outline-dark" role="button">Modifier</a>
-			</div>	
+			<figure class='col-sm-6 col-md-3'>
+				<a class='text-center d-block' href='formajout.php'>
+					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/addBDD.jpg'>
+					<figcaption class='mx-auto'>Ajouter</figcaption>
+				</a>
+			</figure>
+
+	
+			<figure class='col-sm-6 col-md-3'>
+				<a class='text-center d-block' href='recherche.php'>
+					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sans photo.jpg'>
+					<figcaption class='mx-auto'>Rechercher</figcaption>
+				</a>
+			</figure>	
+
+
+			<figure class='col-sm-6 col-md-3'>
+				<a class='text-center d-block' href='#'>
+					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sans photo.jpg'>
+					<figcaption class='mx-auto'>Modifier</figcaption>
+				</a>
+			</figure>	
+
+
+			<figure class='col-sm-6 col-md-3'>
+				<a class='text-center d-block' href='#'>
+					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sans photo.jpg'>
+					<figcaption class='mx-auto'>Supprimer</figcaption>
+				</a>
+			</figure>	
+
 		</div>
+
 	</div>
 </body>
 </html>
