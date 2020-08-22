@@ -15,7 +15,7 @@
 	</style>
 </head>
 <body>
-	<div class="container h-100">
+	<div class="container h-100 justify-content-center mb-5 d-flex">
 
 		<div class='row h-100 align-items-center'>
 			<figure class='col-sm-6 col-md-3'>

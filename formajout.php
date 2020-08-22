@@ -14,7 +14,7 @@
 	<div class="container mb-5">
 		<?php require 'connexion.php' ;?>
 
-		<div class="row col-md-12">
+		<div class="row col-md-12 mb-5">
 			<h1 class="text-center col-md-12 display-4">Ajout dans la base de données</h1>
 		</div>
 		
@@ -28,25 +28,11 @@
 							<?php 
 								$sql = 'SELECT id, libelle from categorie order by libelle;';
 
-								$req = $bdd -> prepare($sql);
-								$req -> execute();
-
-								$ligne = $req -> fetch(PDO::FETCH_ASSOC);
-								echo "	<div class='input-group mb-3'>
-										  <div class='input-group-prepend'>
-										    <div class='input-group-text'>
-										      <input type='radio' name='categorie' value='".$ligne['id']."' checked id='for_".$ligne['libelle']."'>
-										    </div>
-										  </div>
-										  <label for='for_".$ligne['libelle']."' class='form-control'>".$ligne['libelle']."</label>
-										</div>";
-
-
-								while ($ligne = $req -> fetch(PDO::FETCH_ASSOC)) {
+								foreach ($bdd -> query($sql) as $ligne)  {
 									echo "	<div class='input-group mb-3'>
 										  <div class='input-group-prepend'>
 										    <div class='input-group-text'>
-										      <input type='radio' name='categorie' value='".$ligne['id']."'id='for_".$ligne['libelle']."'>
+										      <input type='radio' required name='categorie' value='".$ligne['id']."'id='for_".$ligne['libelle']."'>
 										    </div>
 										  </div>
 										  <label for='for_".$ligne['libelle']."' class='form-control'>".$ligne['libelle']."</label>
@@ -173,19 +159,28 @@
 						<label>Emplacement: </label>
 						<select name="emplacement" class="form-control">
 							<?php 
-								$sql='SELECT distinct emplacement from produits order by emplacement;';
+								$sql='SELECT distinct casier, emplacement from produits order by casier, emplacement;';
 
 								$i=0;
+								$j=0;
 								foreach ($bdd -> query($sql) as $ligne) {
-									$tab_emp[$i]=$ligne['emplacement'];
+									$tab_emp[$i]=$ligne['casier'].'-'.$ligne['emplacement'];
+									$tab_lettre[$j]=$ligne['casier'];
 									$i = $i + 1;
 								}
 
-								for ($i=1; $i < 15; $i++) {
-									if (!(in_array($i, $tab_emp))){
-										echo "<option value='".$i."'>".$i."</option>";
+
+								foreach ($tab_lettre as $lettre) {
+									for ($i=1; $i < 51; $i++) {
+										if (strlen($i)<2) {
+											$i = '0'.$i;
+										}
+										if (!(in_array($lettre.'-'.$i, $tab_emp))){
+											echo "<option value='".$lettre.$i."'>".$lettre.$i."</option>";
+										}
 									}
 								}
+								
 								echo "<option value='autre'>Autre</option>";
 							 ?>
 						</select>
@@ -198,22 +193,9 @@
 			
 				<input type="hidden" name="quantite" value='1'>
 
-				<?php 
-					$sql='SELECT id from produits order by id desc limit 1;';
-
-					$req = $bdd -> prepare($sql);
-					$req -> execute();
-					$ligne = $req -> fetch(PDO::FETCH_ASSOC);
-
-					$id = $ligne['id'] + 1;
-				 ?>
-				 <input type="hidden" name="id" value=<?php echo "'".$id."'" ?>>
-			
-				<br>
-
 				<div class="form-row">
-					 <input type="submit" value="Ajouter" class="form-control col-md-5">
-					 <input type="reset" class="form-control offset-md-2 col-md-5">
+					<a role="button" href='index.php' class="form-control col-md-5 btn btn-outline-danger">Abandonner</a>
+					<input type="submit" value="Ajouter" class="form-control btn btn-outline-success offset-md-2 col-md-5">
 				</div>
 
 			</form>
