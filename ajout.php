@@ -37,7 +37,7 @@
 			foreach ($var as $key => $value) {
 				if ($_POST[$key]=='autre'){
 					if ($_POST[$key.'_autre'] == '') {
-						array_push($erreur, 'Valeur manque dans la case autre correspondant à: '.$key);
+						array_push($erreur, 'Valeur manquante dans la case autre correspondant à: '.$key);
 					}
 					$var[$key] = $_POST[$key.'_autre'];
 				} else {
