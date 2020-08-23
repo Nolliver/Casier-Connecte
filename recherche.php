@@ -73,9 +73,9 @@
 						$sql = 'SELECT * from produits where categorie="'.$_GET['categorie'].'" and sous_categorie = "'.$_GET['sous_categorie'].'" order by nom, type, taille, longueur;';
 
 					// Affichage des sous-catégories
-						echo "<div>";
-							echo "<div class='row mb-5'>";
-								echo "<table class='table table-striped'>";
+						echo "<div class='col-12'>";
+							echo "<div class='row mb-5 col-12'>";
+								echo "<table class='table table-striped col-12'>";
 									foreach ($bdd -> query($sql) as $ligne) {
 										$texte = '<tr><td><img class="rounded border border-secondary" height=80px width=80px src="icone500px500px/'.$ligne['nom_icone'].'"></td><td class="align-middle"> '.$ligne['nom'].' '.$ligne['taille'].' '.$ligne['type'];
 										if (!empty($ligne['longueur'])) {
