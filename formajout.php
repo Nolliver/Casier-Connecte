@@ -11,11 +11,10 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">
-		<?php include('connexion.php'); 
-		?>
+	<div class="container mb-5">
+		<?php require 'connexion.php' ;?>
 
-		<div class="row col-md-12">
+		<div class="row col-md-12 mb-5">
 			<h1 class="text-center col-md-12 display-4">Ajout dans la base de données</h1>
 		</div>
 		
@@ -24,31 +23,19 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-12">
-						<label>Categorie: </label>
+						<label>Categorie </label>
 						<div class="form-group">
 							<?php 
-								$query='select distinct categorie from produits order by categorie;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql = 'SELECT id, libelle from categorie order by libelle;';
 
-								$ligne = mysqli_fetch_assoc($result);
-								echo "	<div class='input-group mb-3'>
-										  <div class='input-group-prepend'>
-										    <div class='input-group-text'>
-										      <input type='radio' name='categorie' value='".$ligne['categorie']."' checked id='for_".$ligne['categorie']."'>
-										    </div>
-										  </div>
-										  <label for='for_".$ligne['categorie']."' class='form-control'>".$ligne['categorie']."</label>
-										</div>";
-
-
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne)  {
 									echo "	<div class='input-group mb-3'>
 										  <div class='input-group-prepend'>
 										    <div class='input-group-text'>
-										      <input type='radio' name='categorie' value='".$ligne['categorie']."' checked id='for_".$ligne['categorie']."'>
+										      <input type='radio' required name='categorie' value='".$ligne['id']."'id='for_".$ligne['libelle']."'>
 										    </div>
 										  </div>
-										  <label for='for_".$ligne['categorie']."' class='form-control'>".$ligne['categorie']."</label>
+										  <label for='for_".$ligne['libelle']."' class='form-control'>".$ligne['libelle']."</label>
 										</div>";
 
 								}
@@ -62,11 +49,10 @@
 						<label>Sous-categorie </label>
 						<select name="sous_categorie" class="form-control">
 							<?php 
-								$query='select distinct sous_categorie from produits order by sous_categorie;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT id, libelle from sous_categorie order by libelle;';
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
-									echo "<option value='".$ligne['sous_categorie']."'>".$ligne['sous_categorie']."</option>";
+								foreach ($bdd -> query($sql) as $ligne) {
+									echo "<option value='".$ligne['id']."'>".$ligne['libelle']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
 							 ?>
@@ -84,10 +70,9 @@
 						<label>Nom </label>
 						<select name="nom" class="form-control">
 							<?php 
-								$query='select distinct nom from produits order by nom;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct nom from produits order by nom;';
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<option value='".$ligne['nom']."'>".$ligne['nom']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
@@ -106,10 +91,9 @@
 						<label>Taille </label>
 						<select name="taille" class="form-control">
 							<?php 
-								$query='select distinct taille from produits order by taille;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct taille from produits order by taille;';
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<option value='".$ligne['taille']."'>".$ligne['taille']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
@@ -134,10 +118,9 @@
 						<label>Type </label>
 						<select name="type" class="form-control">
 							<?php 
-								$query='select distinct type from produits order by type;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct type from produits order by type;';
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<option value='".$ligne['type']."'>".$ligne['type']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
@@ -156,10 +139,9 @@
 						<label>Nom de l'image </label>
 						<select name="nom_icone" class="form-control">
 							<?php 
-								$query='select distinct nom_icone from produits order by nom_icone;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct nom_icone from produits order by nom_icone;';
 
-								while ($ligne = mysqli_fetch_assoc($result)) {
+								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<option value='".$ligne['nom_icone']."'>".$ligne['nom_icone']."</option>";
 								}
 								echo "<option value='autre'>Autre</option>";
@@ -177,20 +159,28 @@
 						<label>Emplacement: </label>
 						<select name="emplacement" class="form-control">
 							<?php 
-								$query='select distinct emplacement from produits order by emplacement;';
-								$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
+								$sql='SELECT distinct casier, emplacement from produits order by casier, emplacement;';
 
 								$i=0;
-								while ($ligne = mysqli_fetch_assoc($result)) {
-									$tab_emp[$i]=$ligne['emplacement'];
+								$j=0;
+								foreach ($bdd -> query($sql) as $ligne) {
+									$tab_emp[$i]=$ligne['casier'].'-'.$ligne['emplacement'];
+									$tab_lettre[$j]=$ligne['casier'];
 									$i = $i + 1;
 								}
 
-								for ($i=1; $i < 15; $i++) {
-									if (!(in_array($i, $tab_emp))){
-										echo "<option value='".$i."'>".$i."</option>";
+
+								foreach ($tab_lettre as $lettre) {
+									for ($i=1; $i < 51; $i++) {
+										if (strlen($i)<2) {
+											$i = '0'.$i;
+										}
+										if (!(in_array($lettre.'-'.$i, $tab_emp))){
+											echo "<option value='".$lettre.$i."'>".$lettre.$i."</option>";
+										}
 									}
 								}
+								
 								echo "<option value='autre'>Autre</option>";
 							 ?>
 						</select>
@@ -203,23 +193,12 @@
 			
 				<input type="hidden" name="quantite" value='1'>
 
-				<?php 
-					$query='select id from produits order by id desc limit 1;';
-					$result = mysqli_query($connexion, $query) or die ('ERREUR '.mysqli_error($connexion));
-					$ligne = mysqli_fetch_assoc($result);
-
-					$id = $ligne['id'] + 1;
-				 ?>
-				 <input type="hidden" name="id" value=<?php echo "'".$id."'" ?>>
-			
-				<br>
-
 				<div class="form-row">
-					 <input type="submit" value="Ajouter" class="form-control col-md-5">
-					 <input type="reset" class="form-control offset-md-2 col-md-5">
+					<a role="button" href='index.php' class="form-control col-md-5 btn btn-outline-danger">Abandonner</a>
+					<input type="submit" value="Ajouter" class="form-control btn btn-outline-success offset-md-2 col-md-5">
 				</div>
+
 			</form>
-			<?php mysqli_close($connexion);  ?>
 		</div>
 	</div>
 
