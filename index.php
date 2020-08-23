@@ -17,7 +17,7 @@
 <body>
 	<div class="container h-100 justify-content-center mb-5 d-flex">
 
-		<div class='row h-100 align-items-center'>
+		<div class='row h-100 align-items-center col-12'>
 			<figure class='col-sm-6 col-md-3'>
 				<a class='text-center d-block' href='formajout.php'>
 					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/addBDD.jpg'>

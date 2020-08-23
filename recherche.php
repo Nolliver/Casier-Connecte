@@ -17,7 +17,7 @@
 
 </head>
 <body>
-	<div class="container h-100 justify-content-center mb-5 d-flex">
+	<div class="container h-100 justify-content-center d-flex mb-5">
 			<?php 
 
 			include("connexion.php");
@@ -28,12 +28,12 @@
 						$sql='SELECT * from categorie order by libelle;';
 
 					// Affichage des catégories
-						echo "<div class='my-auto'>";
-							echo "<div class='row align-items-center my-5'>";
+						echo "<div class='my-auto col-12'>";
+							echo "<div class='row my-5'>";
 								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<figure class='col-sm-6 col-md-3'>";
 										echo "<a class='text-center d-block' href='recherche.php?categorie=".$ligne['id']."'>";
-											echo "<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_icone']."'>";
+											echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_icone']."'>";
 											echo "<figcaption class='mx-auto'>".$ligne['libelle']."</figcaption>";
 										echo "</a>";
 									echo "</figure>";
@@ -50,13 +50,13 @@
 						$sql = 'SELECT distinct sous_categorie.id, libelle, sous_categorie.nom_icone from sous_categorie inner join produits on sous_categorie.id = produits.sous_categorie where produits.categorie='.$_GET['categorie'].' order by libelle;';
 
 					// Affichage des sous-catégories
-						echo "<div class='my-auto'>";
-							echo "<div class='row h-75 align-items-center my-5'>";
+						echo "<div class='my-auto col-12'>";
+							echo "<div class='row align-items-center my-5'>";
 								foreach ($bdd -> query($sql) as $ligne) {
 									echo "<figure class='col-sm-6 col-md-3'>";
 										echo "<a class='text-center d-block' href='".$_SERVER['REQUEST_URI']."&sous_categorie=".$ligne['id']."'>";
-											echo "<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_icone']."'>";
-											echo "<figcaption>".$ligne['libelle']."</figcaption>";
+											echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_icone']."'>";
+											echo "<figcaption class='mx-auto'>".$ligne['libelle']."</figcaption>";
 										echo "</a>";
 									echo "</figure>";
 								}
@@ -73,22 +73,24 @@
 						$sql = 'SELECT * from produits where categorie="'.$_GET['categorie'].'" and sous_categorie = "'.$_GET['sous_categorie'].'" order by nom, type, taille, longueur;';
 
 					// Affichage des sous-catégories
-						echo "<div class='row mb-5'>";
-							echo "<table class='table table-striped'>";
-								foreach ($bdd -> query($sql) as $ligne) {
-									$texte = '<tr><td><img class="rounded border border-secondary" height=80px width=80px src="icone500px500px/'.$ligne['nom_icone'].'"></td><td class="align-middle"> '.$ligne['nom'].' '.$ligne['taille'].' '.$ligne['type'];
-									if (!empty($ligne['longueur'])) {
-										$texte = $texte.' lg '.$ligne['longueur'].'mm';
+						echo "<div>";
+							echo "<div class='row mb-5'>";
+								echo "<table class='table table-striped'>";
+									foreach ($bdd -> query($sql) as $ligne) {
+										$texte = '<tr><td><img class="rounded border border-secondary" height=80px width=80px src="icone500px500px/'.$ligne['nom_icone'].'"></td><td class="align-middle"> '.$ligne['nom'].' '.$ligne['taille'].' '.$ligne['type'];
+										if (!empty($ligne['longueur'])) {
+											$texte = $texte.' lg '.$ligne['longueur'].'mm';
+										}
+										echo $texte." </td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='http://192.168.1.34/".$ligne['emplacement']."'>Voir l'emplacement</a></td></tr>";
 									}
-									echo $texte." </td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='http://192.168.1.34/".$ligne['emplacement']."'>Voir l'emplacement</a></td></tr>";
-								}
-							echo "</table>";
+								echo "</table>";
+							echo "</div>";
 							echo '<a role="button" href="index.php" class="offset-md-3 col-md-6 btn btn-outline-info my-5 ">Retour à l\'acceuil</a>';
 						echo "</div>";
 
 				}
 	 			
 			 ?>
-
+	</div>
 </body>
 </html>
