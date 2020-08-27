@@ -1,0 +1,22 @@
+html, body{
+	height: 100%;
+}
+
+#bouton_acceuil {
+	position: fixed; 
+	bottom: 30px; 
+	right: 20px;
+	background-image: url('images/acceuil.png');
+	background-size: contain;
+	height: 80px;
+	width: 80px;
+}
+
+#bouton_acceuil:hover {
+	background-image: url('images/Acceuil_hover.png');
+}
+
+img {
+	height: 80px;
+	width: 80px;
+}
