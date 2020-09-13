@@ -74,7 +74,7 @@
 										if (!empty($ligne['longueur'])) {
 											$texte = $texte.' lg '.$ligne['longueur'].'mm';
 										}
-										echo $texte." </td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='http://192.168.1.39/".$ligne['emplacement']."'>Voir l'emplacement</a></td></tr>";
+										echo $texte." <td>".$ligne['emplacement']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='http://192.168.1.39/".$ligne['emplacement']."'>Voir l'emplacement</a></td></tr>";
 									}
 								echo "</table>";
 				}
