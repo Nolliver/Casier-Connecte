@@ -9,6 +9,8 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/jquery.chained.js"></script>
 </head>
 <body>
 	<div class="container mb-5">
@@ -19,42 +21,37 @@
 		</div>
 		
 		<div class="row">
-			<form method="POST" action="ajout.php" class="form offset-md-2 col-md-8">
+			<form method="POST" action="ajout.php" class="form offset-md-2 col-md-8" name="ajout">
 
 				<div class="form-row">
 					<div class="form-group col-md-12">
 						<label>Categorie </label>
-						<div class="form-group">
+						<select id="categorie" name="categorie" class="form-control">
 							<?php 
 								$sql = 'SELECT id, libelle from categorie order by libelle;';
 
 								foreach ($bdd -> query($sql) as $ligne)  {
-									echo "	<div class='input-group mb-3'>
-										  <div class='input-group-prepend'>
-										    <div class='input-group-text'>
-										      <input type='radio' required name='categorie' value='".$ligne['id']."'id='for_".$ligne['libelle']."'>
-										    </div>
-										  </div>
-										  <label for='for_".$ligne['libelle']."' class='form-control'>".$ligne['libelle']."</label>
-										</div>";
-
+									echo "<option value='".$ligne['id']."'>".$ligne['libelle']."</option>";
 								}
 							 ?>
-						</div>
+						</select>
 					</div>
 				</div>
+
 
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Sous-categorie </label>
-						<select name="sous_categorie" class="form-control">
-							<?php 
-								$sql='SELECT id, libelle from sous_categorie order by libelle;';
+						<select id="sous_categorie" name="sous_categorie" class="form-control">
+							<?php
+								$sql='SELECT distinct sous_categorie.id, sous_categorie.libelle, produits.categorie from sous_categorie inner join produits on sous_categorie.id = produits.sous_categorie order by libelle;';
 
+								$chainSc = '';
 								foreach ($bdd -> query($sql) as $ligne) {
-									echo "<option value='".$ligne['id']."'>".$ligne['libelle']."</option>";
+									echo "<option value='".$ligne['id']."' data-chained='".$ligne['categorie']."'>".$ligne['libelle']."</option>";
+									$chainSc = $chainSc.' '.$ligne['id'];
 								}
-								echo "<option value='autre'>Autre</option>";
+								echo "<option value='autre' data-chained='".$chainSc." autre'>Autre</option>";
 							 ?>
 						</select>
 					</div>
@@ -68,14 +65,14 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Nom </label>
-						<select name="nom" class="form-control">
+						<select id="nom" name="nom" class="form-control">
 							<?php 
-								$sql='SELECT distinct nom from produits order by nom;';
+								$sql='SELECT distinct nom, sous_categorie from produits order by nom;';
 
 								foreach ($bdd -> query($sql) as $ligne) {
-									echo "<option value='".$ligne['nom']."'>".$ligne['nom']."</option>";
+									echo "<option value='".$ligne['nom']."' data-chained='".$ligne['sous_categorie']."'>".$ligne['nom']."</option>";
 								}
-								echo "<option value='autre'>Autre</option>";
+								echo "<option value='autre' data-chained='".$chainSc." autre'>Autre</option>";
 							 ?>
 						</select>
 					</div>
@@ -89,14 +86,17 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Taille </label>
-						<select name="taille" class="form-control">
+						<select id='taille' name="taille" class="form-control">
 							<?php 
-								$sql='SELECT distinct taille from produits order by taille;';
+								$sql='SELECT distinct taille, sous_categorie from produits order by taille;';
 
+								echo "<option value='' data-chained='".$chainSc." autre'></option>";
 								foreach ($bdd -> query($sql) as $ligne) {
-									echo "<option value='".$ligne['taille']."'>".$ligne['taille']."</option>";
+									if ($ligne['taille'] != '') {
+										echo "<option value='".$ligne['taille']."' data-chained='".$ligne['sous_categorie']."'>".$ligne['taille']."</option>";
+									}
 								}
-								echo "<option value='autre'>Autre</option>";
+								echo "<option value='autre' data-chained='".$chainSc." autre'>Autre</option>";
 							 ?>
 						</select>
 					</div>
@@ -116,14 +116,17 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Type </label>
-						<select name="type" class="form-control">
+						<select id="type" name="type" class="form-control">
 							<?php 
-								$sql='SELECT distinct type from produits order by type;';
+								$sql='SELECT distinct type, sous_categorie from produits order by type;';
 
+								echo "<option value='' data-chained='".$chainSc." autre'></option>";
 								foreach ($bdd -> query($sql) as $ligne) {
-									echo "<option value='".$ligne['type']."'>".$ligne['type']."</option>";
+									if ($ligne['type'] != '') {
+										echo "<option value='".$ligne['type']."' data-chained='".$ligne['sous_categorie']."'>".$ligne['type']."</option>";	
+									}
 								}
-								echo "<option value='autre'>Autre</option>";
+								echo "<option value='autre' data-chained='".$chainSc." autre'>Autre</option>";
 							 ?>
 						</select>
 					</div>
@@ -201,6 +204,13 @@
 			</form>
 		</div>
 	</div>
+
+<script type="text/javascript">
+	$("#nom").chained("#sous_categorie");
+	$("#taille").chained("#sous_categorie");
+	$("#type").chained("#sous_categorie");
+	$("#sous_categorie").chained("#categorie");
+</script>
 
 </body>
 </html>
