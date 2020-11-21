@@ -100,14 +100,12 @@
 
 									foreach ($result as $ligne) {
 										echo '<tr>';
-										foreach ($ligne as $key => $value) {
-											echo'<td><img class="rounded border border-secondary" src="icone500px500px/'.$ligne['nom_photo'].'"></td>';
-											foreach ($var as $value) {
-												echo '<td>'.$ligne[$value].'</td>';
-											}
+										echo'<td><img class="rounded border border-secondary" src="icone500px500px/'.$ligne['nom_photo'].'"></td>';
+										foreach ($var as $value) {
+											echo '<td>'.$ligne[$value].'</td>';
+										}
 										echo"<td>".$ligne['quantite']."</td><td>".$ligne['num']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='https://".$ligne['adresse_ip'].'/'.$ligne['num']."'>Voir l'emplacement</a></td>";
 										echo '</tr>';
-										}
 									}
 								echo "</table>";
 					}
