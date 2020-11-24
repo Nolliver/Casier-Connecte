@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php	
+	if (isset($_GET['table']) and isset($_GET['sous_categorie'])){
+		echo '<html lang="fr">';
+	} else {
+		echo '<html lang="fr" class="h-100">';
+	}
+?>
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
@@ -12,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="recherche.css">
 
 </head>
-<body>
+<body class="h-100">
 
 	<a role="button" href="index.php" class="d-none d-lg-block" id="bouton_acceuil"></a>
 			<?php 
@@ -72,7 +79,7 @@
 
 
 
-				if (isset($_GET['sous_categorie'])) {
+				if (isset($_GET['table']) and isset($_GET['sous_categorie'])) {
 					// Récupération des noms de colonnes de la catégorie choisie
 						$sql = 'SELECT * from '.$_GET['table'].';';
 						$result = $bdd -> query($sql);
@@ -92,41 +99,43 @@
 
 
 					//Recherche de filtre à appliquer
-						$filtre = '';
-						$array_filtre =  array();
-						foreach ($var as $varindex => $varname) {
-							if (isset($_POST[$varname])){
-								$array_filtre[$varname] = array();
-								$val_filtre = '(';
-								foreach ($_POST[$varname] as $key => $value) {
-									$val_filtre = $val_filtre.'"'.$value.'",';
-									array_push($array_filtre[$varname], $value);
+						if (!isset($_POST['reset'])) {
+							$filtre = '';
+							$array_filtre =  array();
+							foreach ($var as $varindex => $varname) {
+								if (isset($_POST[$varname])){
+									$array_filtre[$varname] = array();
+									$val_filtre = '(';
+									foreach ($_POST[$varname] as $key => $value) {
+										$val_filtre = $val_filtre.'"'.$value.'",';
+										array_push($array_filtre[$varname], $value);
+									}
+									$val_filtre = substr($val_filtre,0,-1).')';
+									$filtre = $filtre.' AND '.$_GET['table'].'.'.$varname.' in '.$val_filtre;
 								}
-								$val_filtre = substr($val_filtre,0,-1).')';
-								$filtre = $filtre.' AND '.$_GET['table'].'.'.$varname.' in '.$val_filtre;
 							}
+							$result = $bdd -> query($sql.$filtre.';');
+							$result = $result->fetchAll(PDO::FETCH_ASSOC);
 						}
-						$result = $bdd -> query($sql.$filtre.';');
-						$result = $result->fetchAll(PDO::FETCH_ASSOC);
-
+							
 					// Affichage des sous-catégories
 						echo "<div class = container-fluid>";
 							echo "<div class='col-12'>";
-								echo "<div class='row mb-5 col-12'>";
+								echo "<div class='row mb-5 col-12 position-sticky'>";
 
 
 								//Mis en place des filtres
-									echo "<form class='form col-2' method='POST' action='".$_SERVER['REQUEST_URI']."'>";
-										echo '<nav class="nav flex-column col-1">';
+									echo "<form class='form col-2 mt-5' method='POST' action='".$_SERVER['REQUEST_URI']."'>";
+										echo '<nav class="nav flex-column justify-content-center col-1">';
 									  		foreach ($var as $key => $value) {
 									  			$sql = 'SELECT '.$_GET['table'].'.'.$value.' from ('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$_GET['sous_categorie'].';';
-									  			echo '<div class="btn-group dropright">';
-										  			echo '<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+									  			echo '<div class=" m-2 btn-group dropright">';
+										  			echo '<button type="button" class="mx-auto btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 												    	echo $value;
 												  	echo '</button>';
 												  	echo '<div class="dropdown-menu">';
 													  	foreach ($bdd -> query($sql) as $ligne) {
-													  		if (isset($array_filtre[$value])){
+													  		if (isset($array_filtre[$value]) and !isset($_POST['reset'])){
 													  			if (in_array($ligne[$value], $array_filtre[$value])) {
 														  			$checked = 'checked';
 														  		} else {
@@ -143,7 +152,8 @@
 												echo '</div>';
 									  		}
 										echo '</nav>';
-										echo "<input type='submit' value='Mettre a jour les filtres'>";
+										echo "<input type='submit' value='Mettre a jour les filtres' class='m-2 text-center'>";
+										echo "<input type='submit' name='reset' value='Réinitialiser les filtres' class='m-2 text-center'>";
 									echo '</form>';
 									
 
