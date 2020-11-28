@@ -139,7 +139,7 @@
 												    	echo $value;
 												  	echo "</button>\n";
 												  	echo "<div class='dropdown-menu'>\n";
-												  		$text_filtres = $text_filtres."<li>".$value."</li>\n<ul>\n";
+												  		$text_filtres = $text_filtres."<li><h6 class='card-subtitle my-2'>".$value.":</h6></li>\n<ul>\n";
 
 												  		//vérification des filtres selectionnés à cocher
 													  	foreach ($bdd -> query($sql) as $ligne) {
@@ -160,7 +160,7 @@
 													   		echo "</div>\n";
 
 													   		//Liste des filtres à afficher si coché
-													   		$text_filtres = $text_filtres."<li id='text_".$ligne[$value]."' style='display:none'>".$ligne[$value]."</li>\n";
+													   		$text_filtres = $text_filtres."<li class='card-text' id='text_".$ligne[$value]."' style='display:none'>".$ligne[$value]."</li>\n";
 													   	}
 													 	$text_filtres = $text_filtres."</ul>\n";
 													 echo "</div>\n";
@@ -169,10 +169,19 @@
 										echo "</nav>\n";
 										echo "<input type='submit' value='Mettre a jour les filtres' class='m-2 text-center'>\n";
 										echo "<input type='submit' name='reset' value='Réinitialiser les filtres' class='m-2 text-center'>\n";
+										
+										//Affichage des filtres selectionnés
+										echo "<div class='card mt-5'>";
+											echo "<div class='card-body'>";
+												echo "<ul>\n";
+												echo "<h5 class='card-title'>Filtre selectionné(s):</h5>";
+													echo $text_filtres;
+												echo "</ul>\n";
+											echo "</div>";
+										echo "</div>";
+
 									echo "</form>\n";
-									echo "<ul>\n";
-										echo $text_filtres;
-									echo "</ul>\n";
+
 									
 
 								//Remplissage du tableau
