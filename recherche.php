@@ -6,7 +6,6 @@
 		echo "<html lang='fr' class='h-100'>\n";
 	}
 ?>
-<html lang="fr">
 <head>
 	<meta charset="UTF-8">
 	<title>Recherche</title>
@@ -15,6 +14,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script src="fonction.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="recherche.css">
 
@@ -129,6 +129,7 @@
 									echo "<form class='form col-2 mt-5' method='POST' action='".$_SERVER['REQUEST_URI']."'>\n";
 										echo "<nav class='nav flex-column justify-content-center col-1'>\n";
 										$text_filtres = "";
+										$js_filtre="";
 									  		foreach ($var as $key => $value) {
 									  			$sql = 'SELECT DISTINCT '.$_GET['table'].'.'.$value.' from ('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$_GET['sous_categorie'].';';
 
@@ -145,6 +146,7 @@
 													  		if (isset($array_filtre[$value]) and !isset($_POST['reset'])){
 													  			if (in_array($ligne[$value], $array_filtre[$value])) {
 														  			$checked = "checked";
+														  			$js_filtre = $js_filtre."<script type='text/javascript'>check_filtre('".$value."-".$ligne[$value]."', 'text_".$ligne[$value]."');</script>\n";
 														  		} else {
 														  			$checked ="";
 													  			}
@@ -196,6 +198,7 @@
 								echo "</div>\n";
 							echo "</div>\n";
 						echo "</div>\n";
+						echo $js_filtre;
 					}
 	 			
 			 ?>
@@ -203,23 +206,5 @@
 				<a role="button" href="index.php" class="offset-md-3 col-md-6 btn btn-outline-info my-5 d-lg-none">Retour à l'acceuil</a>
 			</div>
 	</div>
-	
 </body>
-
-<script type="text/javascript">
-	function check_filtre(checkBox, id_text) {
-		var text = document.getElementById(id_text);
-	  // If the checkbox is checked, display the output text
-	  if (checkBox.checked == true){
-	     text.style.display = "block";
-	  } else {
-	     text.style.display = "none";
-	  }
-	}
-
-
-
-</script>
-
-
 </html>
