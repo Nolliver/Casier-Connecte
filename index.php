@@ -28,7 +28,7 @@
 	
 			<figure class='col-sm-6 col-md-3'>
 				<a class='text-center d-block' href='recherche.php'>
-					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sans photo.jpg'>
+					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/rechercher.jpg'>
 					<figcaption class='mx-auto'>Rechercher</figcaption>
 				</a>
 			</figure>	
@@ -36,7 +36,7 @@
 
 			<figure class='col-sm-6 col-md-3'>
 				<a class='text-center d-block' href='#'>
-					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sans photo.jpg'>
+					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/modifier.jpg'>
 					<figcaption class='mx-auto'>Modifier</figcaption>
 				</a>
 			</figure>	
@@ -44,8 +44,15 @@
 
 			<figure class='col-sm-6 col-md-3'>
 				<a class='text-center d-block' href='#'>
-					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sans photo.jpg'>
+					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/supprimer.jpg'>
 					<figcaption class='mx-auto'>Supprimer</figcaption>
+				</a>
+			</figure>	
+
+			<figure class='col-sm-6 col-md-3'>
+				<a class='text-center d-block' href='verif.php'>
+					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sans photo.jpg'>
+					<figcaption class='mx-auto'>Vérification</figcaption>
 				</a>
 			</figure>	
 

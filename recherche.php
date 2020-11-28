@@ -9,14 +9,13 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-	<style type="text/css">
-		html, body{
-			height: 100%;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="recherche.css">
 
 </head>
 <body>
+
+	<a role="button" href="index.php" class="d-none d-lg-block" id="bouton_acceuil"></a>
+
 	<div class="container h-100 justify-content-center d-flex mb-5">
 			<?php 
 
@@ -38,9 +37,6 @@
 										echo "</a>";
 									echo "</figure>";
 								}
-							echo "</div>";
-							echo '<a role="button" href="index.php" class="offset-md-3 col-md-6 btn btn-outline-info my-5 ">Retour à l\'acceuil</a>';
-						echo "</div>";
 				}
 
 
@@ -60,9 +56,6 @@
 										echo "</a>";
 									echo "</figure>";
 								}
-							echo "</div>";
-							echo '<a role="button" href="index.php" class="offset-md-3 col-md-6 btn btn-outline-info my-5 ">Retour à l\'acceuil</a>';
-						echo "</div>";
 				}
 
 
@@ -77,20 +70,20 @@
 							echo "<div class='row mb-5 col-12'>";
 								echo "<table class='table table-striped col-12'>";
 									foreach ($bdd -> query($sql) as $ligne) {
-										$texte = '<tr><td><img class="rounded border border-secondary" height=80px width=80px src="icone500px500px/'.$ligne['nom_icone'].'"></td><td class="align-middle"> '.$ligne['nom'].' '.$ligne['taille'].' '.$ligne['type'];
+										$texte = '<tr><td><img class="rounded border border-secondary" src="icone500px500px/'.$ligne['nom_icone'].'"></td><td class="align-middle"> '.$ligne['nom'].' '.$ligne['taille'].' '.$ligne['type'];
 										if (!empty($ligne['longueur'])) {
 											$texte = $texte.' lg '.$ligne['longueur'].'mm';
 										}
-										echo $texte." </td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='http://192.168.1.39/".$ligne['emplacement']."'>Voir l'emplacement</a></td></tr>";
+										echo $texte." <td>".$ligne['emplacement']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='http://192.168.1.39/".$ligne['emplacement']."'>Voir l'emplacement</a></td></tr>";
 									}
 								echo "</table>";
-							echo "</div>";
-							echo '<a role="button" href="index.php" class="offset-md-3 col-md-6 btn btn-outline-info my-5 ">Retour à l\'acceuil</a>';
-						echo "</div>";
-
 				}
 	 			
 			 ?>
+			</div>
+				<a role="button" href="index.php" class="offset-md-3 col-md-6 btn btn-outline-info my-5 d-lg-none">Retour à l'acceuil</a>
+			</div>
 	</div>
+	
 </body>
 </html>
