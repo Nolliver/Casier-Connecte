@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php	
 	if (isset($_GET['table']) and isset($_GET['sous_categorie'])){
-		echo '<html lang="fr">';
+		echo "<html lang='fr'>\n";
 	} else {
-		echo '<html lang="fr" class="h-100">';
+		echo "<html lang='fr' class='h-100'>\n";
 	}
 ?>
 <html lang="fr">
@@ -38,20 +38,20 @@
 						);
 
 					// Affichage des catégories
-						echo '<div class="container h-100 justify-content-center d-flex mb-5">';
-							echo "<div class='my-auto col-12'>";
-								echo "<div class='row my-5'>";
+						echo "<div class='container h-100 justify-content-center d-flex mb-5'>\n";
+							echo "<div class='my-auto col-12'>\n";
+								echo "<div class='row my-5'>\n";
 									foreach ($categ as $ligne) {
-										echo "<figure class='col-sm-6 col-md-3'>";
-											echo "<a class='text-center d-block' href='recherche.php?table=".$ligne['nom_table']."'>";
-												echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_photo']."'>";
-												echo "<figcaption class='mx-auto'>".$ligne['Titre']."</figcaption>";
-											echo "</a>";
-										echo "</figure>";
+										echo "<figure class='col-sm-6 col-md-3'>\n";
+											echo "<a class='text-center d-block' href='recherche.php?table=".$ligne['nom_table']."'>\n";
+												echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_photo']."'>\n";
+												echo "<figcaption class='mx-auto'>".$ligne['Titre']."</figcaption>\n";
+											echo "</a>\n";
+										echo "</figure>\n";
 									}
-								echo "</div>";
-							echo "</div>";
-						echo "</div>";
+								echo "</div>\n";
+							echo "</div>\n";
+						echo "</div>\n";
 				}
 
 
@@ -61,20 +61,20 @@
 						$sql = 'SELECT distinct sous_categorie.id_sous_categ, sous_categorie.lib_sous_categ, sous_categorie.nom_photo from ('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ order by sous_categorie.lib_sous_categ;';
 
 					// Affichage des sous-catégories
-						echo '<div class="container h-100 justify-content-center d-flex mb-5">';
-							echo "<div class='my-auto col-12'>";
-								echo "<div class='row align-items-center my-5'>";
+						echo "<div class='container h-100 justify-content-center d-flex mb-5'>\n";
+							echo "<div class='my-auto col-12'>\n";
+								echo "<div class='row align-items-center my-5'>\n";
 									foreach ($bdd -> query($sql) as $ligne) {
-										echo "<figure class='col-sm-6 col-md-3'>";
-											echo "<a class='text-center d-block' href='".$_SERVER['REQUEST_URI']."&sous_categorie=".$ligne['id_sous_categ']."'>";
-												echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_photo']."'>";
-												echo "<figcaption class='mx-auto'>".$ligne['lib_sous_categ']."</figcaption>";
-											echo "</a>";
-										echo "</figure>";
+										echo "<figure class='col-sm-6 col-md-3'>\n";
+											echo "<a class='text-center d-block' href='".$_SERVER['REQUEST_URI']."&sous_categorie=".$ligne['id_sous_categ']."'>\n";
+												echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_photo']."'>\n";
+												echo "<figcaption class='mx-auto'>".$ligne['lib_sous_categ']."</figcaption>\n";
+											echo "</a>\n";
+										echo "</figure>\n";
 									}
-								echo "</div>";
-							echo "</div>";
-						echo "</div>";
+								echo "</div>\n";
+							echo "</div>\n";
+						echo "</div>\n";
 				}
 
 
@@ -84,6 +84,7 @@
 						$sql = 'SELECT * from '.$_GET['table'].';';
 						$result = $bdd -> query($sql);
 						$var_categ = array_keys($result->fetch(PDO::FETCH_ASSOC));
+						unset($var_categ[array_search('id_produit', $var_categ)]);
 
 
 					//Recherche des sous-catégories
@@ -119,67 +120,82 @@
 						}
 							
 					// Affichage des sous-catégories
-						echo "<div class = container-fluid>";
-							echo "<div class='col-12'>";
-								echo "<div class='row mb-5 col-12 position-sticky'>";
+						echo "<div class = container-fluid>\n";
+							echo "<div class='col-12'>\n";
+								echo "<div class='row mb-5 col-12 position-sticky'>\n";
 
 
 								//Mis en place des filtres
-									echo "<form class='form col-2 mt-5' method='POST' action='".$_SERVER['REQUEST_URI']."'>";
-										echo '<nav class="nav flex-column justify-content-center col-1">';
+									echo "<form class='form col-2 mt-5' method='POST' action='".$_SERVER['REQUEST_URI']."'>\n";
+										echo "<nav class='nav flex-column justify-content-center col-1'>\n";
+										$text_filtres = "";
 									  		foreach ($var as $key => $value) {
-									  			$sql = 'SELECT '.$_GET['table'].'.'.$value.' from ('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$_GET['sous_categorie'].';';
-									  			echo '<div class=" m-2 btn-group dropright">';
-										  			echo '<button type="button" class="mx-auto btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+									  			$sql = 'SELECT DISTINCT '.$_GET['table'].'.'.$value.' from ('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$_GET['sous_categorie'].';';
+
+									  			//Création des boutons dropright
+									  			echo "<div class='m-2 btn-group dropright'>\n";
+										  			echo "<button type='button' class='mx-auto btn btn-secondary dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\n";
 												    	echo $value;
-												  	echo '</button>';
-												  	echo '<div class="dropdown-menu">';
+												  	echo "</button>\n";
+												  	echo "<div class='dropdown-menu'>\n";
+												  		$text_filtres = $text_filtres."<li>".$value."</li>\n<ul>\n";
+
+												  		//vérification des filtres selectionnés à cocher
 													  	foreach ($bdd -> query($sql) as $ligne) {
 													  		if (isset($array_filtre[$value]) and !isset($_POST['reset'])){
 													  			if (in_array($ligne[$value], $array_filtre[$value])) {
-														  			$checked = 'checked';
+														  			$checked = "checked";
 														  		} else {
-														  			$checked = '';
+														  			$checked ="";
 													  			}
 													  		} else {
-													  			$checked = '';
+													  			$checked ="";
 													  		}
-													  		echo "<div class='ml-2 form-check'>";
-													   			echo '<input type="checkbox" name="'.$value.'[]" id="'.$value.'-'.$ligne[$value].'" value="'.$ligne[$value].'" class="form-check-input" '.$checked.'><label for="'.$value.'-'.$ligne[$value].'" class="form-check-label">'.$ligne[$value].'</label><br>';
-													   		echo "</div>";
+
+													  		//Mise en place des checkbox pour les filtres
+													  		echo "<div class='ml-2 form-check'>\n";
+													   			echo "<input type='checkbox' name='".$value."[]' id='".$value."-".$ligne[$value]."' value='".$ligne[$value]."' class='form-check-input' ".$checked." onclick='check_filtre(this,\"text_".$ligne[$value]."\")'>\n<label for='".$value."-".$ligne[$value]."' class='form-check-label'>".$ligne[$value]."</label><br>\n";
+													   		echo "</div>\n";
+
+													   		//Liste des filtres à afficher si coché
+													   		$text_filtres = $text_filtres."<li id='text_".$ligne[$value]."' style='display:none'>".$ligne[$value]."</li>\n";
 													   	}
-													 echo '</div>';
-												echo '</div>';
+													 	$text_filtres = $text_filtres."</ul>\n";
+													 echo "</div>\n";
+												echo "</div>\n";
 									  		}
-										echo '</nav>';
-										echo "<input type='submit' value='Mettre a jour les filtres' class='m-2 text-center'>";
-										echo "<input type='submit' name='reset' value='Réinitialiser les filtres' class='m-2 text-center'>";
-									echo '</form>';
+										echo "</nav>\n";
+										echo "<input type='submit' value='Mettre a jour les filtres' class='m-2 text-center'>\n";
+										echo "<input type='submit' name='reset' value='Réinitialiser les filtres' class='m-2 text-center'>\n";
+									echo "</form>\n";
+									echo "<ul>\n";
+										echo $text_filtres;
+									echo "</ul>\n";
 									
 
 								//Remplissage du tableau
-									echo "<table class='table table-striped col-8'>";
-										echo "<tr>";
-											echo "<th></th>";
+									echo "<table class='table table-striped col-8'>\n";
+										echo "<tr>\n";
+											echo "<th></th>\n";
 											foreach ($var as $value) {
-												echo '<th>'.$value.'</th>';
+												echo "<th>".$value."</th>\n";
 											}
-											echo '<th>Quantité</th><th>Emplacement</th><th></th>';
-										echo "</tr>";
+											echo "<th>Quantité</th><th>Emplacement</th><th></th>\n";
+										echo "</tr>\n";
 
 										foreach ($result as $ligne) {
-											echo '<tr>';
-											echo'<td><img class="rounded border border-secondary" src="icone500px500px/'.$ligne['nom_photo'].'"></td>';
+											echo "<tr>\n";
+											echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['nom_photo']."'></td>\n";
 											foreach ($var as $value) {
-												echo '<td>'.$ligne[$value].'</td>';
+												echo "<td>".$ligne[$value]."</td>\n";
 											}
-											echo"<td>".$ligne['quantite']."</td><td>".$ligne['num']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='https://".$ligne['adresse_ip'].'/'.$ligne['num']."'>Voir l'emplacement</a></td>";
-											echo '</tr>';
+											echo"<td>".$ligne['quantite']."</td><td>".$ligne['num']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='https://".$ligne['adresse_ip'].'/'.$ligne['num']."'>Voir l'emplacement</a></td>\n";
+											echo "</tr>\n";
 										}
-									echo "</table>";
-								echo "</div>";
-							echo "</div>";
-						echo "</div>";
+									echo "</table>\n";
+								echo "</div>\n";
+							echo "</div>\n";
+						echo "</div>\n";
 					}
 	 			
 			 ?>
@@ -189,4 +205,21 @@
 	</div>
 	
 </body>
+
+<script type="text/javascript">
+	function check_filtre(checkBox, id_text) {
+		var text = document.getElementById(id_text);
+	  // If the checkbox is checked, display the output text
+	  if (checkBox.checked == true){
+	     text.style.display = "block";
+	  } else {
+	     text.style.display = "none";
+	  }
+	}
+
+
+
+</script>
+
+
 </html>
