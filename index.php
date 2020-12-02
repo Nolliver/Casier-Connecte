@@ -19,7 +19,7 @@
 
 		<div class='row h-100 align-items-center col-12'>
 			<figure class='col-sm-6 col-md-3'>
-				<a class='text-center d-block' href='formajout.php'>
+				<a class='text-center d-block' href='ajout.php'>
 					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/addBDD.jpg'>
 					<figcaption class='mx-auto'>Ajouter</figcaption>
 				</a>
