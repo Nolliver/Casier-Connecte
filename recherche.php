@@ -200,7 +200,7 @@
 											foreach ($var as $value) {
 												echo "<td>".$ligne[$value]."</td>\n";
 											}
-											echo"<td>".$ligne['quantite']."</td><td>".$ligne['num']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='https://".$ligne['adresse_ip'].'/'.$ligne['num']."'>Voir l'emplacement</a></td>\n";
+											echo"<td>".$ligne['quantite']."</td><td>".$ligne['num']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='javascript:window.open(\"http://".$ligne['adresse_ip'].'/'.$ligne['num']."\")'>Voir l'emplacement</a></td>\n";
 											echo "</tr>\n";
 										}
 									echo "</table>\n";
@@ -214,6 +214,7 @@
 			</div>
 				<a role="button" href="index.php" class="offset-md-3 col-md-6 btn btn-outline-info my-5 d-lg-none">Retour à l'acceuil</a>
 			</div>
+
 	</div>
 </body>
 </html>
