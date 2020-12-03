@@ -14,12 +14,27 @@
 </head>
 <body>
 	<div class="container mb-5">
-		<?php include("connexion.php");
+		<?php 
+		include("connexion.php");
+		include("fonction.php");
 
-		$categ = "";
-		if (isset($_POST['categorie']) and !empty($_POST['categorie'])){
-			$categ = $_POST['categorie'];
-		} else
+		$table = "";
+		if (isset($_POST['Table']) and !empty($_POST['Table'])){
+			$table = $_POST['Table'];
+		}
+
+		$sous_categ = "";
+		if (isset($_POST['sous_categorie']) and !empty($_POST['sous_categorie'])){
+			$sous_categ = $_POST['sous_categorie'];
+		}
+
+		$autre = "";
+		if (isset($_POST['autre']) and !empty($_POST['autre'])){
+			$autre = $_POST['autre'];
+		}
+		
+
+
 		;?>
 
 		<div class="row col-md-12 mb-5">
@@ -31,216 +46,132 @@
 
 				<div class="form-row">
 					<div class="form-group col-md-12">
-						<label>Categorie </label>
-						<select id="categorie" name="categorie" class="form-control" onchange="submit()">
+						<label>Categorie:</label>
+						<select id="Table" name="Table" class="form-control" onchange="submit()">
 							<option value="">------- Choisissez une catégorie -------</option>
-							<option value="quincaillerie" <?php if($categ == "quincaillerie"){echo "selected";}  ?> >Quincaillerie</option>
-							<option value="outils" <?php if($categ == "outils" ){echo "selected";}  ?> >Outils</option>
-							<option value="composants_electroniques" <?php if($categ == "composants_electroniques" ){echo "selected";}  ?> >Composants éléctroniques</option>
-							<option value="elements_mecaniques" <?php if($categ == "elements_mecaniques"){echo "selected";}  ?> >Eléments mécaniques</option>
+							<option value="quincaillerie" <?php if($table == "quincaillerie"){echo "selected";}  ?> >Quincaillerie</option>
+							<option value="outils" <?php if($table == "outils" ){echo "selected";}  ?> >Outils</option>
+							<option value="composants_electroniques" <?php if($table == "composants_electroniques" ){echo "selected";}  ?> >Composants éléctroniques</option>
+							<option value="elements_mecaniques" <?php if($table == "elements_mecaniques"){echo "selected";}  ?> >Eléments mécaniques</option>
 						</select>
 					</div>
 				</div>
 
-
 				<?php 
-					if (isset($_POST['categorie']) and !empty($_POST['categorie'])){
+					if ($table <> ""){
+						$table = $_POST['Table'];
 						echo "<div class='form-row'>\n";
-							echo "<div class='form-group col-md-6'>\n";
-								echo "<label>Sous-categorie </label>\n";
-								echo "<select id='sous_categorie' name='sous_categorie' class='form-control'>\n";
+							$taille = ($sous_categ == 'autre') ? 'col-md-6' : 'col-md-12'; 
+							echo "<div class='form-group ".$taille."'>\n";
+								echo "<label>Sous-categorie:</label>\n";
+								echo "<select id='sous_categorie' name='sous_categorie' class='form-control' onchange='submit()'>\n";
+									echo "<option value=''>------- Choisissez une catégorie -------</option>";
 
-										$sql="SELECT distinct sous_categorie.id_sous_categ, lib_sous_categ FROM (sous_categorie INNER JOIN produits on produits.id_sous_categ = sous_categorie.id_sous_categ) INNER JOIN ".$categ." on ".$categ.".id_produit = produits.id_produit;";
+										$sql="SELECT distinct sous_categorie.id_sous_categ, lib_sous_categ FROM (sous_categorie INNER JOIN produits on produits.id_sous_categ = sous_categorie.id_sous_categ) INNER JOIN ".$table." on ".$table.".id_produit = produits.id_produit;";
 
 										foreach ($bdd -> query($sql) as $ligne) {
-											echo "<option value='".$ligne['id_sous_categ']."' >".$ligne['lib_sous_categ']."</option>\n";
+											$selected = ($sous_categ == $ligne['id_sous_categ']) ? "selected" : "";
+											echo "<option value='".$ligne['id_sous_categ']."' ".$selected." >".$ligne['lib_sous_categ']."</option>\n";
 										}
-										echo "<option value='autre'>Autre</option>\n";
+
+										$selected = ($sous_categ == 'autre') ? "selected" : "";
+										echo "<option value='autre' ".$selected.">Autre</option>\n";
 
 								echo "</select>\n";
 							echo "</div>\n";
-							echo "<div class='form-group col-md-6'>\n";
-								echo "<label>Autre </label>\n";
-								echo "<input type='text' name='sous_categorie_autre' class='form-control'>\n";
-							echo "</div>\n";
+							
+							if ($sous_categ == 'autre') {
+								echo "<div class='form-group col-md-6'>\n";
+									echo "<label>Autre </label>\n";
+									echo "<input type='text' id='autre' class='form-control' required>\n";
+								echo "</div>\n";
+							}
 						echo "</div>\n";
 
-					} 
 
+
+						if ($sous_categ <> "") {
+							// Récupération des noms de colonnes de la catégorie choisie
+							$sql = 'SHOW COLUMNS FROM '.$table.';';
+							$result = $bdd -> query($sql);
+							$var_categ = array();
+							foreach ($bdd -> query($sql) as $ligne) {
+								array_push($var_categ, $ligne['Field']);
+							}
+							unset($var_categ[array_search('id_produit', $var_categ)]);
+
+							if ($autre <> '') {
+								//Recherche des sous-catégories
+									$sql = 'SELECT * from ((('.$table.' inner join produits on '.$table.'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ) inner join emplacement on produits.id_produit = emplacement.id_produit) inner join casier on emplacement.id_casier = casier.id_casier where sous_categorie.id_sous_categ ='.$sous_categ.';';
+
+								//Recherche des colonnes n'étant pas entièrement vide
+									$result = $bdd -> query($sql);
+									$result = $result->fetchAll(PDO::FETCH_ASSOC);
+									$var_not_null = notemptycol($result);
+
+								//On ne garde que l'intersection des variables se trouvant dans la liste des variables de la catégorie choisie, et dans la liste des variables non entièrement vide
+									$var = array_intersect($var_categ, $var_not_null);
+								} else {
+									$var = $var_categ;
+								}
+
+								foreach ($var as $key => $value) {
+									$sql = 'SELECT DISTINCT '.$table.'.'.$value.' from ('.$table.' inner join produits on '.$table.'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$sous_categ.';';
+
+									echo "<div class='form-row'>\n";
+										echo "<div class='form-group col-md-12'>\n";
+											echo "<label for='".$value."'>".$value.":</label>\n";
+											echo "<input list='list_".$value."' type='text' id='".$value."' class='form-control'>\n";
+											echo "<datalist id='list_".$value."'>\n";
+												foreach ($bdd -> query($sql) as $ligne) {
+													echo "<option value='".$ligne[$value]."'>\n";
+												}	
+											echo "</datalist>\n";
+										echo "</div>\n";
+									echo "</div>\n";
+								}
+							
+
+							echo "<div class='form-row'>\n";
+								echo "<div class='form-group col-md-6'>\n";
+									echo "<label>Casier: </label>\n";
+									echo "<select name='casier' id='casier' class='form-control'>\n";
+											$sql='SELECT distinct id_casier FROM casier order by id_casier;';
+
+											foreach ($bdd -> query($sql) as $ligne) {
+												echo "<option value='".$ligne['id_casier']."'>".$ligne['id_casier']."</option>\n";
+											}
+									echo "</select>\n";
+								echo "</div>\n";
+
+
+								echo "<div class='form-group col-md-6'>\n";
+									echo "<label for='tiroir'>Tiroir:</label>\n";
+										echo "<input type='text' id='tiroir' class='form-control' required>\n";
+								echo "</div>\n";
+							echo "</div>\n";
+
+							echo "<div class='form-row'>\n";
+								echo "<div class='form-group col-md-12'>\n";
+									echo "<label for='quantite'>Quantité:</label>\n";
+									echo "<input type='text' id='quantite' class='form-control' required>\n";
+								echo "</div>";
+							echo "</div>\n";
+
+							echo "<div class='form-row'>\n";
+								echo "<a role='button' href='index.php' class='form-control col-md-5 btn btn-outline-danger'>Abandonner</a>\n";
+								echo "<input type='submit' value='Ajouter' class='form-control btn btn-outline-success offset-md-2 col-md-5'>\n";
+							echo "</div>\n";
+
+						} 
+					}
 
 				 ?>
-				<!-- <div class="form-row">
-					<div class="form-group col-md-6">
-						<label>Sous-categorie </label>
-						<select id="sous_categorie" name="sous_categorie" class="form-control">
-							<?php
-/*								$sql='SELECT distinct sous_categorie.id, sous_categorie.libelle, produits.categorie from sous_categorie inner join produits on sous_categorie.id = produits.sous_categorie order by libelle;';
-
-								$chainSc = '';
-								foreach ($bdd -> query($sql) as $ligne) {
-									echo "<option value='".$ligne['id']."' data-chained='".$ligne['categorie']."'>".$ligne['libelle']."</option>";
-									$chainSc = $chainSc.' '.$ligne['id'];
-								}
-								echo "<option value='autre' data-chained='".$chainSc." autre'>Autre</option>";*/
-							 ?>
-						</select>
-					</div>
-					<div class="form-group col-md-6">
-						<label>Autre </label>
-						<input type="text" name="sous_categorie_autre" class="form-control">
-					</div>
-				</div>
-
-
-				<div class="form-row">
-					<div class="form-group col-md-6">
-						<label>Nom </label>
-						<select id="nom" name="nom" class="form-control">
-							<?php 
-/*								$sql='SELECT distinct nom, sous_categorie from produits order by nom;';
-
-								foreach ($bdd -> query($sql) as $ligne) {
-									echo "<option value='".$ligne['nom']."' data-chained='".$ligne['sous_categorie']."'>".$ligne['nom']."</option>";
-								}
-								echo "<option value='autre' data-chained='".$chainSc." autre'>Autre</option>";*/
-							 ?>
-						</select>
-					</div>
-					<div class="form-group col-md-6">
-						<label>Autre </label>
-						<input type="text" name="nom_autre" class="form-control">
-					</div>
-				</div>
-
-
-				<div class="form-row">
-					<div class="form-group col-md-6">
-						<label>Taille </label>
-						<select id='taille' name="taille" class="form-control">
-							<?php 
-								/*$sql='SELECT distinct taille, sous_categorie from produits order by taille;';
-
-								echo "<option value='' data-chained='".$chainSc." autre'></option>";
-								foreach ($bdd -> query($sql) as $ligne) {
-									if ($ligne['taille'] != '') {
-										echo "<option value='".$ligne['taille']."' data-chained='".$ligne['sous_categorie']."'>".$ligne['taille']."</option>";
-									}
-								}
-								echo "<option value='autre' data-chained='".$chainSc." autre'>Autre</option>";*/
-							 ?>
-						</select>
-					</div>
-					<div class="form-group col-md-6">
-						<label>Autre </label>
-						<input type="text" name="taille_autre" class="form-control">
-					</div>
-				</div>
-
-
-				<div class="form-row form-group">
-					<label>Longueur </label>
-					<input type="text" name="longueur" class="form-control">
-				</div>
-
-
-				<div class="form-row">
-					<div class="form-group col-md-6">
-						<label>Type </label>
-						<select id="type" name="type" class="form-control">
-							<?php 
-/*								$sql='SELECT distinct type, sous_categorie from produits order by type;';
-
-								echo "<option value='' data-chained='".$chainSc." autre'></option>";
-								foreach ($bdd -> query($sql) as $ligne) {
-									if ($ligne['type'] != '') {
-										echo "<option value='".$ligne['type']."' data-chained='".$ligne['sous_categorie']."'>".$ligne['type']."</option>";	
-									}
-								}
-								echo "<option value='autre' data-chained='".$chainSc." autre'>Autre</option>";*/
-							 ?>
-						</select>
-					</div>
-					<div class="form-group col-md-6">
-						<label>Autre </label>
-						<input type="text" name="type_autre" class="form-control">
-					</div>
-				</div>
-
-				
-				<div class="form-row">
-					<div class="form-group col-md-6">
-						<label>Nom de l'image </label>
-						<select name="nom_icone" class="form-control">
-							<?php 
-/*								$sql='SELECT distinct nom_icone from produits order by nom_icone;';
-
-								foreach ($bdd -> query($sql) as $ligne) {
-									echo "<option value='".$ligne['nom_icone']."'>".$ligne['nom_icone']."</option>";
-								}
-								echo "<option value='autre'>Autre</option>";*/
-							 ?>
-						</select>
-					</div>
-					<div class="form-group col-md-6">
-						<label>Autre </label>
-						<input type="text" name="nom_icone_autre" class="form-control">
-					</div>
-				</div>
-				
-				<div class="form-row">
-					<div class="form-group col-md-6">
-						<label>Emplacement: </label>
-						<select name="emplacement" class="form-control">
-							<?php 
-/*								$sql='SELECT distinct casier, emplacement from produits order by casier, emplacement;';
-
-								$i=0;
-								$j=0;
-								foreach ($bdd -> query($sql) as $ligne) {
-									$tab_emp[$i]=$ligne['casier'].'-'.$ligne['emplacement'];
-									$tab_lettre[$j]=$ligne['casier'];
-									$i = $i + 1;
-								}
-
-
-								foreach ($tab_lettre as $lettre) {
-									for ($i=1; $i < 51; $i++) {
-										if (strlen($i)<2) {
-											$i = '0'.$i;
-										}
-										if (!(in_array($lettre.'-'.$i, $tab_emp))){
-											echo "<option value='".$lettre.$i."'>".$lettre.$i."</option>";
-										}
-									}
-								}
-								
-								echo "<option value='autre'>Autre</option>";*/
-							 ?>
-						</select>
-					</div>
-					<div class="form-group col-md-6">
-						<label>Autre </label>
-						<input type="text" name="emplacement_autre" class="form-control">
-					</div>
-				</div> -->
-			
-				<input type="hidden" name="quantite" value='1'>
-
-				<div class="form-row">
-					<a role="button" href='index.php' class="form-control col-md-5 btn btn-outline-danger">Abandonner</a>
-					<input type="submit" value="Ajouter" class="form-control btn btn-outline-success offset-md-2 col-md-5">
-				</div>
 
 			</form>
 		</div>
 	</div>
 
-<!-- <script type="text/javascript">
-	$("#nom").chained("#sous_categorie");
-	$("#taille").chained("#sous_categorie");
-	$("#type").chained("#sous_categorie");
-	$("#sous_categorie").chained("#categorie");
-</script> -->
 
 </body>
 </html>
