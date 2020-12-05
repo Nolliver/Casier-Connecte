@@ -32,9 +32,6 @@
 		if (isset($_POST['autre']) and !empty($_POST['autre'])){
 			$autre = $_POST['autre'];
 		}
-		
-
-
 		;?>
 
 		<div class="row col-md-12 mb-5">
@@ -42,7 +39,7 @@
 		</div>
 		
 		<div class="row">
-			<form method="POST" action="ajout.php" class="form offset-md-2 col-md-8" name="ajout">
+			<form method="POST" action='ajout.php' class="form offset-md-2 col-md-8" name="ajout">
 
 				<div class="form-row">
 					<div class="form-group col-md-12">
@@ -100,7 +97,7 @@
 							}
 							unset($var_categ[array_search('id_produit', $var_categ)]);
 
-							if ($autre <> '') {
+							if ($autre == '') {
 								//Recherche des sous-catégories
 									$sql = 'SELECT * from ((('.$table.' inner join produits on '.$table.'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ) inner join emplacement on produits.id_produit = emplacement.id_produit) inner join casier on emplacement.id_casier = casier.id_casier where sous_categorie.id_sous_categ ='.$sous_categ.';';
 
@@ -158,14 +155,15 @@
 								echo "</div>";
 							echo "</div>\n";
 
-							echo "<div class='form-row'>\n";
-								echo "<a role='button' href='index.php' class='form-control col-md-5 btn btn-outline-danger'>Abandonner</a>\n";
-								echo "<input type='submit' value='Ajouter' class='form-control btn btn-outline-success offset-md-2 col-md-5'>\n";
-							echo "</div>\n";
-
 						} 
 					}
 
+					echo "<div class='form-row'>\n";
+						echo "<a role='button' href='index.php' class='form-control ".($sous_categ == '' ? 'col-md-12' : 'col-md-5')." btn btn-outline-danger'>Abandonner</a>\n";
+						if ($sous_categ <> '') {
+							echo "<input type='submit' value='Ajouter' class='form-control btn btn-outline-success offset-md-2 col-md-5'>\n";
+						}
+					echo "</div>\n";
 				 ?>
 
 			</form>
