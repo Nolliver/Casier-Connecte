@@ -196,7 +196,7 @@
 
 										foreach ($result as $ligne) {
 											echo "<tr>\n";
-											echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['nom_photo']."'></td>\n";
+											echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
 											foreach ($var as $value) {
 												echo "<td>".$ligne[$value]."</td>\n";
 											}
