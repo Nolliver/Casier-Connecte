@@ -152,7 +152,6 @@
 										echo "<input type='text' name='quantite' class='form-control' required>\n";
 									echo "</div>";
 								echo "</div>\n";
-
 							} 
 						}
 
@@ -165,91 +164,122 @@
 					echo "</form>\n";
 				echo "</div>\n";
 			} else {
-				$table = $_POST['Table'];
-				$id_sous_categ = $_POST['sous_categorie'];
+				//Récupération de la table et sous categorie
+					$table = $_POST['Table'];
+					$id_sous_categ = $_POST['sous_categorie'];
 
 				//Ajout de la nouvelle sous_categorie si autre
-				if ($id_sous_categ == 'autre'){
-					$lib_sous_categ = $_POST['autre'];
-					$sql = 'SELECT MAX(id_sous_categ) as id FROM sous_categorie';
-					$result = $bdd -> query($sql);
-					$result = $result->fetch(PDO::FETCH_ASSOC);
-					$id_sous_categ = $result['id']+1;
+					if ($id_sous_categ == 'autre'){
+						$lib_sous_categ = $_POST['autre'];
+						$sql = 'SELECT MAX(id_sous_categ) as id FROM sous_categorie';
+						$result = $bdd -> query($sql);
+						$result = $result->fetch(PDO::FETCH_ASSOC);
+						$id_sous_categ = $result['id']+1;
 
-					$sql = "INSERT INTO sous_categorie VALUES (:id_sous_categ, :lib_sous_categ, :photo_sous_categ);";
-					$req = $bdd -> prepare($sql);
-					$req -> execute(array(
-							'id_sous_categ' => $id_sous_categ,
-							'lib_sous_categ' => $lib_sous_categ,
-							'photo_sous_categ' => 'sous categ-'.$sous_categ.'.jpg'
-						));
-				} else {
-					$sql = "SELECT lib_sous_categ FROM sous_categorie WHERE id_sous_categ = ".$id_sous_categ.";";
-					$result = $bdd -> query($sql);
-					$result = $result->fetch(PDO::FETCH_ASSOC);
-					$lib_sous_categ = $result['lib_sous_categ'];
-				}
+						$sql = "INSERT INTO sous_categorie VALUES (:id_sous_categ, :lib_sous_categ, :photo_sous_categ);";
+						$req = $bdd -> prepare($sql);
+						$res = $req -> execute(array(
+								'id_sous_categ' => $id_sous_categ,
+								'lib_sous_categ' => $lib_sous_categ,
+								'photo_sous_categ' => 'sous categ-'.$sous_categ.'.jpg'
+							));
+						if (!$res) {
+							echo "Erreur lors de l'ajout dans la table sous_categorie";
+						}
+					} else {
+						$sql = "SELECT lib_sous_categ FROM sous_categorie WHERE id_sous_categ = ".$id_sous_categ.";";
+						$result = $bdd -> query($sql);
+						$result = $result->fetch(PDO::FETCH_ASSOC);
+						$lib_sous_categ = $result['lib_sous_categ'];
+					}
 
 
 				//Récupération des informations du formulaire
+					$casier = $_POST['casier'];
+					$tiroir = $_POST['tiroir'];
+					$quantite = $_POST['quantite'];
 
-				$casier = $_POST['casier'];
-				$tiroir = $_POST['tiroir'];
-				$quantite = $_POST['quantite'];
+/*					if (intval($_POST['tiroir']) > 1 or intval($_POST['tiroir']) < 51 ){
+						$tiroir = intval($_POST['tiroir']);
+					}else{
+						echo "Le Tiroir est un entier entre 1 et 50";
+						exit;
+					}*/
 
-				$sql = 'SHOW COLUMNS FROM '.$table.';';
+/*					if (intval($_POST['quantite']) > 0){
+						$quantite = intval($_POST['quantite']);
+					}else{
+						echo "La quantité doit être un entier non nul";
+						exit;
+					}*/
+					
 
-				$value_table=array();
-				foreach ($bdd -> query($sql) as $ligne) {
-					if (isset($_POST[$ligne['Field']])) {
-						$value_table[$ligne['Field']] = $_POST[$ligne['Field']];
+					$sql = 'SHOW COLUMNS FROM '.$table.';';
+					$value_table=array();
+					foreach ($bdd -> query($sql) as $ligne) {
+						if (isset($_POST[$ligne['Field']])) {
+							$value_table[$ligne['Field']] = $_POST[$ligne['Field']];
+						}
 					}
-				}
 
-				$type = isset($value_table['type']) ? $value_table['type'] : '';
-				$photo_prod = $lib_sous_categ.'-'.$type.'.jpg';
+					$type = isset($value_table['type']) ? $value_table['type'] : '';
+					$photo_prod = $lib_sous_categ.'-'.$type.'.jpg';
 
-				//Récupération du l'id produit
-				$sql = 'SELECT MAX(id_produit) as id FROM produits';
-				$result = $bdd -> query($sql);
-				$result = $result->fetch(PDO::FETCH_ASSOC);
-				$id_prod = $result['id']+1;
+
+				//Récupération du l'id produits
+					$sql = 'SELECT MAX(id_produit) as id FROM produits';
+					$result = $bdd -> query($sql);
+					$result = $result->fetch(PDO::FETCH_ASSOC);
+					$id_prod = $result['id']+1;
 
 				//Ajout dans la table produits
-				$sql = "INSERT INTO produits VALUES (:id_prod, :photo_prod, :id_sous_categ) ";
-				$req = $bdd -> prepare($sql);
-				$req -> execute(array(
-						'id_prod' => $id_prod,
-						'photo_prod' => $photo_prod,
-						'id_sous_categ' => $id_sous_categ
-					));
+					$sql = "INSERT INTO produits VALUES (:id_prod, :photo_prod, :id_sous_categ) ";
+					$req = $bdd -> prepare($sql);
+					$res = $req -> execute(array(
+							'id_prod' => $id_prod,
+							'photo_prod' => $photo_prod,
+							'id_sous_categ' => $id_sous_categ
+						));
+					if (!$res) {
+						echo "Erreur lors de l'ajout dans la table produits";
+						exit;
+					}
 
 				//Ajout dans la table emplacement
-				$sql = "INSERT INTO emplacement VALUES (:id_prod, :casier, :tiroir, :quantite) ";
-				$req = $bdd -> prepare($sql);
-				$req -> execute(array(
-						'id_prod' => $id_prod,
-						'casier' => $casier,
-						'tiroir' => $tiroir,
-						'quantite' => $quantite
-					));
+					$sql = "INSERT INTO emplacement VALUES (:id_prod, :casier, :tiroir, :quantite) ";
+					$req = $bdd -> prepare($sql);
+					$res = $req -> execute(array(
+							'id_prod' => $id_prod,
+							'casier' => $casier,
+							'tiroir' => $tiroir,
+							'quantite' => $quantite
+						));
+					if (!$res) {
+						echo "Erreur lors de l'ajout dans la table emplacement";
+						exit;
+					}
 
 				//Ajout dans la table de la catégorie choisie
-				$sql = "INSERT INTO ".$table." (id_produit, ";
-				foreach ($value_table as $key => $value) {
-					$sql = $sql.$key.", ";
-				}
-				$sql = substr($sql, 0, -2);
-				$sql = $sql.") VALUES (".$id_prod.", ";
-				foreach ($value_table as $key => $value) {
-					$sql = $sql."'".$value."', ";
-				}
-				$sql = substr($sql, 0, -2).");";
+					$sql = "INSERT INTO ".$table." (id_produit, ";
+					foreach ($value_table as $key => $value) {
+						$sql = $sql.$key.", ";
+					}
+					$sql = substr($sql, 0, -2);
+					$sql = $sql.") VALUES (".$id_prod.", ";
+					foreach ($value_table as $key => $value) {
+						$sql = $sql."'".$value."', ";
+					}
+					$sql = substr($sql, 0, -2).");";
 
-				echo $sql;
+					echo $sql;
 
-				$req = $bdd -> prepare($sql);
-				$req -> execute();
+					$req = $bdd -> prepare($sql);
+					$res = $req -> execute();
+					if (!$res) {
+						echo "Erreur lors de l'ajout dans la table ".$table;
+						exit;
+					}
+
 			}
 		?>
 	</div>
