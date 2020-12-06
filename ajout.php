@@ -131,7 +131,7 @@
 									echo "<div class='form-group col-md-6'>\n";
 										echo "<label>Casier: </label>\n";
 										echo "<select name='casier' name='casier' class='form-control'>\n";
-												$sql='SELECT distinct id_casier FROM casier order by id_casier;';
+												$sql='SELECT distinct id_casier FROM casier order by id_casier desc;';
 
 												foreach ($bdd -> query($sql) as $ligne) {
 													echo "<option value='".$ligne['id_casier']."'>".$ligne['id_casier']."</option>\n";
@@ -181,7 +181,7 @@
 						$res = $req -> execute(array(
 								'id_sous_categ' => $id_sous_categ,
 								'lib_sous_categ' => $lib_sous_categ,
-								'photo_sous_categ' => 'sous categ-'.$sous_categ.'.jpg'
+								'photo_sous_categ' => 'sous categ-'.$lib_sous_categ.'.jpg'
 							));
 						if (!$res) {
 							echo "Erreur lors de l'ajout dans la table sous_categorie";
@@ -199,26 +199,36 @@
 					$tiroir = $_POST['tiroir'];
 					$quantite = $_POST['quantite'];
 
-/*					if (intval($_POST['tiroir']) > 1 or intval($_POST['tiroir']) < 51 ){
-						$tiroir = intval($_POST['tiroir']);
+					if (intval($_POST['tiroir']) > 0 and intval($_POST['tiroir']) < 51 ){
+						if (intval($_POST['tiroir']) > 0 and intval($_POST['tiroir']) < 10 ) {
+							$tiroir = '0'.$tiroir;
+						}
 					}else{
 						echo "Le Tiroir est un entier entre 1 et 50";
 						exit;
-					}*/
+					}
 
-/*					if (intval($_POST['quantite']) > 0){
+					if (intval($_POST['quantite']) > 0){
 						$quantite = intval($_POST['quantite']);
 					}else{
 						echo "La quantité doit être un entier non nul";
 						exit;
-					}*/
+					}
 					
 
 					$sql = 'SHOW COLUMNS FROM '.$table.';';
 					$value_table=array();
 					foreach ($bdd -> query($sql) as $ligne) {
-						if (isset($_POST[$ligne['Field']])) {
+						if (isset($_POST[$ligne['Field']]) and !empty($_POST[$ligne['Field']])) {
+	/*						if ($ligne['Type'] == 'int(11)') {
+
+							} else if($ligne['Type'] == 'decimal(15,2)'){
+
+							} else {
+
+							}*/
 							$value_table[$ligne['Field']] = $_POST[$ligne['Field']];
+							
 						}
 					}
 
@@ -271,8 +281,6 @@
 					}
 					$sql = substr($sql, 0, -2).");";
 
-					echo $sql;
-
 					$req = $bdd -> prepare($sql);
 					$res = $req -> execute();
 					if (!$res) {
@@ -280,6 +288,8 @@
 						exit;
 					}
 
+					echo "Ajout réussis !";
+					header("Refresh:1 ;url=ajout.php");
 			}
 		?>
 	</div>
