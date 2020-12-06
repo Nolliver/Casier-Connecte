@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 06 déc. 2020 à 16:38
+-- Généré le :  Dim 06 déc. 2020 à 16:40
 -- Version du serveur :  5.7.17
 -- Version de PHP :  7.1.10
 
@@ -146,7 +146,8 @@ CREATE TABLE `quincaillerie` (
   `diametre_tube` decimal(15,2) DEFAULT NULL,
   `diametre_int` decimal(15,2) DEFAULT NULL,
   `diametre_ext` decimal(15,2) DEFAULT NULL,
-  `genre` varchar(50) DEFAULT NULL
+  `genre` varchar(50) DEFAULT NULL,
+  `empreinte` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
