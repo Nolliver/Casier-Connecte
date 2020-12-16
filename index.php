@@ -54,6 +54,13 @@
 					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sans photo.jpg'>
 					<figcaption class='mx-auto'>Vérification</figcaption>
 				</a>
+			</figure>
+
+			<figure class='col-sm-6 col-md-3'>
+				<a class='text-center d-block' href='javascript:window.open(http://192.16.1.44/TEST)'>
+					<img style='width: 12em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sans photo.jpg'>
+					<figcaption class='mx-auto'>Test</figcaption>
+				</a>
 			</figure>	
 
 		</div>
