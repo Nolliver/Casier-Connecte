@@ -131,7 +131,7 @@
 									echo "<div class='form-group col-md-6'>\n";
 										echo "<label>Casier: </label>\n";
 										echo "<select name='casier' name='casier' class='form-control'>\n";
-												$sql='SELECT distinct id_casier FROM casier order by id_casier desc;';
+												$sql='SELECT distinct id_casier FROM casier order by id_casier;';
 
 												foreach ($bdd -> query($sql) as $ligne) {
 													echo "<option value='".$ligne['id_casier']."'>".$ligne['id_casier']."</option>\n";
@@ -176,7 +176,7 @@
 						$result = $result->fetch(PDO::FETCH_ASSOC);
 						$id_sous_categ = $result['id']+1;
 
-						$sql = "INSERT INTO sous_categorie VALUES (:id_sous_categ, ':lib_sous_categ', ':photo_sous_categ');";
+						$sql = "INSERT INTO sous_categorie VALUES (:id_sous_categ, :lib_sous_categ, :photo_sous_categ);";
 						$req = $bdd -> prepare($sql);
 						$res = $req -> execute(array(
 								'id_sous_categ' => $id_sous_categ,
@@ -184,7 +184,17 @@
 								'photo_sous_categ' => 'sous categ-'.$lib_sous_categ.'.jpg'
 							));
 						if (!$res) {
-							echo "Erreur lors de l'ajout dans la table sous_categorie";
+							echo "<h1>Erreur lors de la création de la nouvelle sous_categorie</h1>";
+							echo "\nPDO::errorInfo():\n";
+   							print_r($req->errorInfo());
+   							echo "<p>".
+							strtr($sql,array(
+									':id_sous_categ' => $id_sous_categ,
+									':lib_sous_categ' => $lib_sous_categ,
+									':photo_sous_categ' => 'sous categ-'.$lib_sous_categ.'.jpg'
+								)).
+								"</p>";
+   							exit;
 						}
 					} else {
 						$sql = "SELECT lib_sous_categ FROM sous_categorie WHERE id_sous_categ = ".$id_sous_categ.";";
@@ -252,13 +262,6 @@
 						));
 					if (!$res) {
 						echo "<h1>Erreur lors de l'ajout dans la table produits</h1>";
-						echo "<p>".
-							strtr($sql,array(
-								':id_prod' => $id_prod,
-								':photo_prod' => $photo_prod,
-								':id_sous_categ' => $id_sous_categ
-							)).
-						"</p>";
 						echo "\nPDO::errorInfo():\n";
    						print_r($req->errorInfo());
 						exit;
@@ -274,12 +277,14 @@
 							'quantite' => $quantite
 						));
 					if (!$res) {
-						echo "Erreur lors de l'ajout dans la table emplacement";
+						echo "<h1>Erreur lors de l'ajout dans la table emplacement</h1>";
+						echo "\nPDO::errorInfo():\n";
+   						print_r($req->errorInfo());
 						exit;
 					}
 
 				//Ajout dans la table de la catégorie choisie
-					$sql = "INSERT INTO ".$table." (id_produit, ";
+					$sql = "INSERT INTO ".$table." (id_produit, "; 
 					foreach ($value_table as $key => $value) {
 						$sql = $sql.$key.", ";
 					}
@@ -293,11 +298,14 @@
 					$req = $bdd -> prepare($sql);
 					$res = $req -> execute();
 					if (!$res) {
-						echo "Erreur lors de l'ajout dans la table ".$table;
+						echo "<h1>Erreur lors de l'ajout dans la table ".$table."</h1>";
+						echo "\nPDO::errorInfo():\n";
+   						print_r($req->errorInfo());
+   						echo "<br>".$sql;
 						exit;
 					}
 
-					echo "Ajout réussis !";
+					echo "<h1> Ajout réussis ! </h1>";
 					header("Refresh:1 ;url=ajout.php");
 			}
 		?>
