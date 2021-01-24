@@ -31,7 +31,7 @@
 					//Recherche des catégories
 
 						$categ = array(
-							array('nom_table' => "element_mecanique", 'Titre' => "Elements mecaniques" , 'nom_photo' => "elements_mecaniques.jpg"),
+							array('nom_table' => "elements_mecaniques", 'Titre' => "Elements mecaniques" , 'nom_photo' => "elements_mecaniques.jpg"),
 							array('nom_table' => "composants_electroniques", 'Titre' => "Composants electroniques" , 'nom_photo' => "composants_electroniques.jpg"),
 							array('nom_table' => "outils", 'Titre' => "Outils" , 'nom_photo' => "outils.jpg"), 
 							array('nom_table' => "quincaillerie", 'Titre' => 'Quincaillerie' , 'nom_photo' => 'quincaillerie.jpg')
