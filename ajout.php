@@ -176,7 +176,7 @@
 						$result = $result->fetch(PDO::FETCH_ASSOC);
 						$id_sous_categ = $result['id']+1;
 
-						$sql = "INSERT INTO sous_categorie VALUES (:id_sous_categ, :lib_sous_categ, :photo_sous_categ);";
+						$sql = "INSERT INTO sous_categorie VALUES (:id_sous_categ, ':lib_sous_categ', ':photo_sous_categ');";
 						$req = $bdd -> prepare($sql);
 						$res = $req -> execute(array(
 								'id_sous_categ' => $id_sous_categ,
@@ -251,7 +251,16 @@
 							'id_sous_categ' => $id_sous_categ
 						));
 					if (!$res) {
-						echo "Erreur lors de l'ajout dans la table produits";
+						echo "<h1>Erreur lors de l'ajout dans la table produits</h1>";
+						echo "<p>".
+							strtr($sql,array(
+								':id_prod' => $id_prod,
+								':photo_prod' => $photo_prod,
+								':id_sous_categ' => $id_sous_categ
+							)).
+						"</p>";
+						echo "\nPDO::errorInfo():\n";
+   						print_r($req->errorInfo());
 						exit;
 					}
 
