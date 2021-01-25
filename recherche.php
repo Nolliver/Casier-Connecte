@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="recherche.css">
 
 </head>
-<body class="h-100">
+<body class="min-vh-100">
 
 	<a role="button" href="index.php" class="d-none d-lg-block" id="bouton_acceuil"></a>
 			<?php 
