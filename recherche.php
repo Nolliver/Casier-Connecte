@@ -91,7 +91,7 @@
 						$sql = 'SELECT * from ((('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ) inner join emplacement on produits.id_produit = emplacement.id_produit) inner join casier on emplacement.id_casier = casier.id_casier where sous_categorie.id_sous_categ ='.$_GET['sous_categorie'];
 
 					//Recherche des colonnes n'étant pas entièrement vide
-						$result = $bdd -> query($sql.';');
+						$result = $bdd -> query($sql.' Order by 2, 3;');
 						$result = $result->fetchAll(PDO::FETCH_ASSOC);
 						$var_not_null = notemptycol($result);
 
@@ -115,7 +115,7 @@
 									$filtre = $filtre.' AND '.$_GET['table'].'.'.$varname.' in '.$val_filtre;
 								}
 							}
-							$result = $bdd -> query($sql.$filtre.';');
+							$result = $bdd -> query($sql.$filtre.' Order by 2, 3;');
 							$result = $result->fetchAll(PDO::FETCH_ASSOC);
 						}
 							
@@ -131,7 +131,7 @@
 										$text_filtres = "";
 										$js_filtre="";
 									  		foreach ($var as $key => $value) {
-									  			$sql = 'SELECT DISTINCT '.$_GET['table'].'.'.$value.' from ('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$_GET['sous_categorie'].';';
+									  			$sql = 'SELECT DISTINCT '.$_GET['table'].'.'.$value.' from ('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$_GET['sous_categorie'].' Order by 1;';
 
 									  			//Création des boutons dropright
 									  			echo "<div class='m-2 btn-group dropright'>\n";
@@ -156,7 +156,10 @@
 
 													  		//Mise en place des checkbox pour les filtres
 													  		echo "<div class='ml-2 form-check'>\n";
-													   			echo "<input type='checkbox' name='".$value."[]' id='".$value."-".$ligne[$value]."' value='".$ligne[$value]."' class='form-check-input' ".$checked." onclick='check_filtre(this,\"text_".$ligne[$value]."\")'>\n<label for='".$value."-".$ligne[$value]."' class='form-check-label'>".$ligne[$value]."</label><br>\n";
+													   			echo "<input type='checkbox' name='".$value."[]' id='".$value."-".$ligne[$value]."' value='".$ligne[$value]."' class='form-check-input' ".$checked." onclick='check_filtre(this,\"text_".$ligne[$value]."\")'>\n";
+													   			echo "<label for='".$value."-".$ligne[$value]."' class='form-check-label'>";
+													   				echo is_null($ligne[$value]) ? "(vide)": $ligne[$value];
+													   			echo "</label><br>\n";
 													   		echo "</div>\n";
 
 													   		//Liste des filtres à afficher si coché
