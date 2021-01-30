@@ -44,7 +44,7 @@
 									foreach ($categ as $ligne) {
 										echo "<figure class='col-sm-6 col-md-3'>\n";
 											echo "<a class='text-center d-block' href='recherche.php?table=".$ligne['nom_table']."'>\n";
-												echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_photo']."'>\n";
+												echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sous_categ/".$ligne['nom_photo']."'>\n";
 												echo "<figcaption class='mx-auto'>".$ligne['Titre']."</figcaption>\n";
 											echo "</a>\n";
 										echo "</figure>\n";
