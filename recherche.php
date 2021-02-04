@@ -20,8 +20,12 @@
 
 </head>
 <body class="min-vh-100">
+	<h1 class="d-block d-sm-none">XS</h1>
+	<h1 class="d-none d-sm-block d-md-none">SM</h1>
+	<h1 class="d-none d-md-block d-lg-none">MD</h1>
+	<h1 class="d-none d-lg-block d-xl-none">LG</h1>
+	<h1 class="d-none d-xl-block">XL</h1>
 
-	<a role="button" href="index.php" class="d-none d-lg-block" id="bouton_acceuil"></a>
 			<?php 
 
 			include("connexion.php");
@@ -80,14 +84,14 @@
 
 
 				if (isset($_GET['table']) and isset($_GET['sous_categorie'])) {
-					// Récupération des noms de colonnes de la catégorie choisie
+					// Récupération des noms de colonnes de la sous catégorie choisie
 						$sql = 'SELECT * from '.$_GET['table'].';';
 						$result = $bdd -> query($sql);
 						$var_categ = array_keys($result->fetch(PDO::FETCH_ASSOC));
 						unset($var_categ[array_search('id_produit', $var_categ)]);
 
 
-					//Recherche des sous-catégories
+					//Recherche des produits de la sous categorie
 						$sql = 'SELECT * from ((('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ) inner join emplacement on produits.id_produit = emplacement.id_produit) inner join casier on emplacement.id_casier = casier.id_casier where sous_categorie.id_sous_categ ='.$_GET['sous_categorie'];
 
 					//Recherche des colonnes n'étant pas entièrement vide
@@ -119,23 +123,21 @@
 							$result = $result->fetchAll(PDO::FETCH_ASSOC);
 						}
 							
-					// Affichage des sous-catégories
+					// Affichage des produits
 						echo "<div class = container-fluid>\n";
-							echo "<div class='col-12'>\n";
-								echo "<div class='row mb-5 col-12 position-sticky'>\n";
-
-
-								//Mis en place des filtres
-									echo "<form class='form col-2 mt-5' method='POST' action='".$_SERVER['REQUEST_URI']."'>\n";
-										echo "<nav class='nav flex-column justify-content-center col-1'>\n";
+							echo "<div class='row col-12'>\n";
+								echo "<div class='xs-col-12 sm-col-12 md-col-2 pr-3'>";
+									//Mis en place des filtres
+									echo "<form class='form col-12 mt-5 px-0' method='POST' action='".$_SERVER['REQUEST_URI']."'>\n";
+										echo "<nav class='nav flex-column justify-content-center'>\n";
 										$text_filtres = "";
 										$js_filtre="";
 									  		foreach ($var as $key => $value) {
 									  			$sql = 'SELECT DISTINCT '.$_GET['table'].'.'.$value.' from ('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$_GET['sous_categorie'].' Order by 1;';
 
 									  			//Création des boutons dropright
-									  			echo "<div class='m-2 btn-group dropright'>\n";
-										  			echo "<button type='button' class='mx-auto btn btn-secondary dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\n";
+									  			echo "<div class='my-2 btn-group dropright'>\n";
+										  			echo "<button type='button' class='mx-auto btn btn-secondary dropdown-toggle col-12' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\n";
 												    	echo $value;
 												  	echo "</button>\n";
 												  	echo "<div class='dropdown-menu'>\n";
@@ -170,44 +172,47 @@
 												echo "</div>\n";
 									  		}
 										echo "</nav>\n";
-										echo "<input type='submit' value='Mettre a jour les filtres' class='m-2 text-center'>\n";
-										echo "<input type='submit' name='reset' value='Réinitialiser les filtres' class='m-2 text-center'>\n";
-										
-										//Affichage des filtres selectionnés
+										echo "<input type='submit' value='Mettre a jour' class='my-2 col-12 text-center'>\n";
+										echo "<input type='submit' name='reset' value='Réinitialiser' class='my-2 col-12 text-center'>\n";
+									echo "</form>\n";
+
+									//Affichage des filtres selectionnés
+									echo "<div class='xs-col-6 md-col-6 '>";	
 										echo "<div class='card mt-5'>";
 											echo "<div class='card-body'>";
 												echo "<ul>\n";
-												echo "<h5 class='card-title'>Filtre selectionné(s):</h5>";
+												echo "<h5 class='card-title'>Filtres: </h5>";
 													echo $text_filtres;
 												echo "</ul>\n";
 											echo "</div>";
 										echo "</div>";
+									echo "</div>";
+								echo "</div>";
+								
 
-									echo "</form>\n";
+								
 
-									
-
-								//Remplissage du tableau
-									echo "<table class='table table-striped col-8'>\n";
-										echo "<tr>\n";
-											echo "<th></th>\n";
-											foreach ($var as $value) {
-												echo "<th>".$value."</th>\n";
-											}
-											echo "<th>Quantité</th><th>Emplacement</th><th></th>\n";
-										echo "</tr>\n";
-
-										foreach ($result as $ligne) {
-											echo "<tr>\n";
-											echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
-											foreach ($var as $value) {
-												echo "<td>".$ligne[$value]."</td>\n";
-											}
-											echo"<td>".$ligne['quantite']."</td><td>".$ligne['num']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='javascript:window.open(\"http://".$ligne['adresse_ip'].'/'.$ligne['num']."\")'>Voir l'emplacement</a></td>\n";
-											echo "</tr>\n";
+							//Remplissage du tableau
+								echo "<table class='table table-striped col'>\n";
+									echo "<tr>\n";
+										echo "<th></th>\n";
+										foreach ($var as $value) {
+											echo "<th>".$nom_col[$value]."</th>\n";
 										}
-									echo "</table>\n";
-								echo "</div>\n";
+										echo "<th>Quantité</th><th>Emplacement</th><th></th>\n";
+									echo "</tr>\n";
+
+									foreach ($result as $ligne) {
+										echo "<tr>\n";
+										echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
+										foreach ($var as $value) {
+											$val = stristr($ligne[$value], '-')?stristr($ligne[$value], '-', true).'&shy;'.stristr($ligne[$value], '-'):$ligne[$value];
+											echo "<td>".$val."</td>\n";
+										}
+										echo"<td>".$ligne['quantite']."</td><td>".$ligne['num']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='javascript:window.open(\"http://".$ligne['adresse_ip'].'/'.$ligne['num']."\")'>Allumer Tiroir</a></td>\n";
+										echo "</tr>\n";
+									}
+								echo "</table>\n";
 							echo "</div>\n";
 						echo "</div>\n";
 						echo $js_filtre;
@@ -215,7 +220,7 @@
 	 			
 			 ?>
 			</div>
-				<a role="button" href="index.php" class="offset-md-3 col-md-6 btn btn-outline-info my-5 d-lg-none">Retour à l'acceuil</a>
+				<a role="button" href="index.php" class="offset-md-3 col-md-6 btn btn-outline-info my-5">Retour à l'acceuil</a>
 			</div>
 
 	</div>

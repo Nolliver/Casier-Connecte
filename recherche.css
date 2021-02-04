@@ -17,3 +17,7 @@ img {
 	height: 80px;
 	width: 80px;
 }
+
+table{
+	hyphens: manual;
+}
