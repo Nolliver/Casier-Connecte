@@ -125,10 +125,10 @@
 							
 					// Affichage des produits
 						echo "<div class = container-fluid>\n";
-							echo "<div class='row col-12'>\n";
-								echo "<div class='xs-col-12 sm-col-12 md-col-2 pr-3'>";
+							echo "<div class='row col-12 p-0 m-0'>\n";
+								echo "<div class='col-xs-6 col-md-2'>";
 									//Mis en place des filtres
-									echo "<form class='form col-12 mt-5 px-0' method='POST' action='".$_SERVER['REQUEST_URI']."'>\n";
+									echo "<form class='form col-12 mt-5 px-0 pr-2' method='POST' action='".$_SERVER['REQUEST_URI']."'>\n";
 										echo "<nav class='nav flex-column justify-content-center'>\n";
 										$text_filtres = "";
 										$js_filtre="";
@@ -177,9 +177,9 @@
 									echo "</form>\n";
 
 									//Affichage des filtres selectionnés
-									echo "<div class='xs-col-6 md-col-6 '>";	
+									echo "<div class='col-12 my-3 px-0'>";	
 										echo "<div class='card mt-5'>";
-											echo "<div class='card-body'>";
+											echo "<div class='card-body px-0 py-3 w-auto'>";
 												echo "<ul>\n";
 												echo "<h5 class='card-title'>Filtres: </h5>";
 													echo $text_filtres;
@@ -193,13 +193,13 @@
 								
 
 							//Remplissage du tableau
-								echo "<table class='table table-striped col'>\n";
+								echo "<table class='text-center table-hover table table-striped table-responsive col'>\n";
 									echo "<tr>\n";
 										echo "<th></th>\n";
 										foreach ($var as $value) {
 											echo "<th>".$nom_col[$value]."</th>\n";
 										}
-										echo "<th>Quantité</th><th>Emplacement</th><th></th>\n";
+										echo "<th>Quantité</th><th>Emplacement</th>\n";
 									echo "</tr>\n";
 
 									foreach ($result as $ligne) {
@@ -209,7 +209,7 @@
 											$val = stristr($ligne[$value], '-')?stristr($ligne[$value], '-', true).'&shy;'.stristr($ligne[$value], '-'):$ligne[$value];
 											echo "<td>".$val."</td>\n";
 										}
-										echo"<td>".$ligne['quantite']."</td><td>".$ligne['num']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='javascript:window.open(\"http://".$ligne['adresse_ip'].'/'.$ligne['num']."\")'>Allumer Tiroir</a></td>\n";
+										echo"<td>".$ligne['quantite']."</td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='javascript:window.open(\"http://".$ligne['adresse_ip'].'/'.$ligne['num']."\")'>Allumer le tiroir <span class='font-weight-bold'>".$ligne['id_casier'].'-'.$ligne['num']."</span></a></td>\n";
 										echo "</tr>\n";
 									}
 								echo "</table>\n";
