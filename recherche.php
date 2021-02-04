@@ -124,9 +124,9 @@
 					// Affichage des produits
 						echo "<div class = container-fluid>\n";
 							echo "<div class='row col-12 p-0 m-0'>\n";
-								echo "<div class='col-xs-6 col-md-2'>";
+								echo "<div class='col-xs-6 col-md-2'>\n";
 									//Mis en place des filtres
-									echo "<form class='form col-12 mt-5 px-0 pr-2' method='POST' action='".$_SERVER['REQUEST_URI']."'>\n";
+									echo "<form class='form col-12 mt-5 px-0 pe-2' method='POST' action='".$_SERVER['REQUEST_URI']."'>\n";
 										echo "<nav class='nav flex-column justify-content-center'>\n";
 										$text_filtres = "";
 										$js_filtre="";
@@ -134,12 +134,12 @@
 									  			$sql = 'SELECT DISTINCT '.$_GET['table'].'.'.$value.' from ('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$_GET['sous_categorie'].' Order by 1;';
 
 									  			//Création des boutons dropright
-									  			echo "<div class='my-2 btn-group dropright'>\n";
-										  			echo "<button type='button' class='mx-auto btn btn-secondary dropdown-toggle col-12' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>\n";
+									  			echo "<div class='my-2 btn-group dropdown'>\n";
+										  			echo "<button type='button' class='mx-auto btn btn-secondary dropdown-toggle col-12' data-bs-toggle='dropdown' aria-expanded='false'>\n";
 												    	echo $value;
 												  	echo "</button>\n";
-												  	echo "<div class='dropdown-menu'>\n";
-												  		$text_filtres = $text_filtres."<li><h6 class='card-subtitle my-2'>".$value.":</h6></li>\n<ul>\n";
+												  	echo "<ul class='dropdown-menu dropdown-menu-end'>\n";
+												  		$text_filtres = $text_filtres."<li><h6 class='card-subtitle my-2'>".$nom_col[$value].":</h6></li>\n<ul>\n";
 
 												  		//vérification des filtres selectionnés à cocher
 													  	foreach ($bdd -> query($sql) as $ligne) {
@@ -155,7 +155,7 @@
 													  		}
 
 													  		//Mise en place des checkbox pour les filtres
-													  		echo "<div class='ml-2 form-check'>\n";
+													  		echo "<div class='ms-2 form-check'>\n";
 													   			echo "<input type='checkbox' name='".$value."[]' id='".$value."-".$ligne[$value]."' value='".$ligne[$value]."' class='form-check-input' ".$checked." onclick='check_filtre(this,\"text_".$ligne[$value]."\")'>\n";
 													   			echo "<label for='".$value."-".$ligne[$value]."' class='form-check-label'>";
 													   				echo is_null($ligne[$value]) ? "(vide)": $ligne[$value];
@@ -166,7 +166,7 @@
 													   		$text_filtres = $text_filtres."<li class='card-text' id='text_".$ligne[$value]."' style='display:none'>".$ligne[$value]."</li>\n";
 													   	}
 													 	$text_filtres = $text_filtres."</ul>\n";
-													 echo "</div>\n";
+													 echo "</ul>\n";
 												echo "</div>\n";
 									  		}
 										echo "</nav>\n";
@@ -182,35 +182,37 @@
 												echo "<h5 class='card-title'>Filtres: </h5>";
 													echo $text_filtres;
 												echo "</ul>\n";
-											echo "</div>";
-										echo "</div>";
-									echo "</div>";
-								echo "</div>";
+											echo "</div>\n";
+										echo "</div>\n";
+									echo "</div>\n";
+								echo "</div>\n";
 								
 
 								
 
 							//Remplissage du tableau
-								echo "<table class='text-center table-hover table table-striped table-responsive col-xs-12 col-md-10 align-middle'>\n";
-									echo "<tr>\n";
-										echo "<th></th>\n";
-										foreach ($var as $value) {
-											echo "<th>".$nom_col[$value]."</th>\n";
-										}
-										echo "<th>Quantité</th><th>Emplacement</th>\n";
-									echo "</tr>\n";
-
-									foreach ($result as $ligne) {
+								echo "<div class='table-responsive-lg col-10'>\n";
+									echo "<table class='text-center table-hover table table-striped align-middle'>\n";
 										echo "<tr>\n";
-										echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
-										foreach ($var as $value) {
-											$val = stristr($ligne[$value], '-')?stristr($ligne[$value], '-', true).'&shy;'.stristr($ligne[$value], '-'):$ligne[$value];
-											echo "<td>".$val."</td>\n";
-										}
-										echo"<td>".$ligne['quantite']."</td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='javascript:window.open(\"http://".$ligne['adresse_ip'].'/'.$ligne['num']."\")'>Allumer le tiroir <span class='font-weight-bold'>".$ligne['id_casier'].'-'.$ligne['num']."</span></a></td>\n";
+											echo "<th></th>\n";
+											foreach ($var as $value) {
+												echo "<th>".$nom_col[$value]."</th>\n";
+											}
+											echo "<th>Quantité</th><th>Emplacement</th>\n";
 										echo "</tr>\n";
-									}
-								echo "</table>\n";
+
+										foreach ($result as $ligne) {
+											echo "<tr>\n";
+											echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
+											foreach ($var as $value) {
+												$val = stristr($ligne[$value], '-')?stristr($ligne[$value], '-', true).'&shy;'.stristr($ligne[$value], '-'):$ligne[$value];
+												echo "<td>".$val."</td>\n";
+											}
+											echo"<td>".$ligne['quantite']."</td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='javascript:window.open(\"http://".$ligne['adresse_ip'].'/'.$ligne['num']."\")'>Allumer le tiroir <strong>".$ligne['id_casier'].'-'.$ligne['num']."</strong></a></td>\n";
+											echo "</tr>\n";
+										}
+									echo "</table>\n";
+								echo "</div>\n";
 							echo "</div>\n";
 						echo "</div>\n";
 						echo $js_filtre;
@@ -218,7 +220,7 @@
 	 			
 			 ?>
 			</div>
-				<a role="button" href="index.php" class="offset-md-3 col-md-6 btn btn-outline-info my-5">Retour à l'acceuil</a>
+				<a role="button" href="index.php" class="offset-3 col-6 btn btn-outline-info my-5">Retour à l'acceuil</a>
 			</div>
 
 	</div>
