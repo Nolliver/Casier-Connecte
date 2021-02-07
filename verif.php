@@ -11,26 +11,22 @@
 
 </head>
 <body>
-
-	<a role="button" href="index.php" class="d-none d-lg-block" id="bouton_acceuil"></a>
-
-	<div class="container h-100 justify-content-center mb-5">
+	<div class="container justify-content-center mb-5">
 		<?php 
 			include("connexion.php");
 
-			$sql='SELECT distinct emplacement from produits order by emplacement;';
-			$emp =array();
-			foreach ($bdd -> query($sql) as $ligne) {
-				array_push($emp, $ligne['emplacement']);
-			}
+			$sql='SELECT distinct e.id_casier, e.num from (casier as c left join emplacement as e on c.id_casier = e.id_casier) left join tiroir as t on t.num = e.num order by 1,2';
+			$sth = $bdd -> prepare($sql);
+			$sth -> execute();
+			$emp = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-			foreach ($emp as $key => $value) {
-				$sql='SELECT * from (produits inner join categorie on produits.categorie = categorie.id) inner join sous_categorie on sous_categorie.id = produits.sous_categorie where emplacement = '.$value.' order by nom, type, taille, longueur;';
+			foreach ($emp as $key => $value) {/*
+				$sql='SELECT distinct lib_sous_categ from sous_categorie inner join emplacement;';*/
 
 						echo "<div class='col-12'>";
 							echo "<div class='row mb-5 col-12'>";
-								echo "<h1>Emplacement n°".$value."</h1>";
-								echo "<table class='table table-striped col-12'>";
+								echo "<h1>Emplacement n°".$value['id_casier']."-".$value['num']."</h1>";
+/*								echo "<table class='table table-striped col-12'>";
 									foreach ($bdd -> query($sql) as $ligne) {
 										$texte = '<tr><td><img class="rounded border border-secondary" src="icone500px500px/'.$ligne['nom_icone'].'"></td><td class="align-middle"> '.$ligne['nom'].' '.$ligne['taille'].' '.$ligne['type'];
 										if (!empty($ligne['longueur'])) {
@@ -38,7 +34,7 @@
 										}
 										echo $texte." <td>".$ligne['emplacement']."</td></td><td class='align-middle text-center' ><a class='btn btn-primary' role='button' href='http://192.168.1.39/".$ligne['emplacement']."'>Voir l'emplacement</a></td></tr>";
 									}
-								echo "</table>";
+								echo "</table>";*/
 							echo "</div>";
 						echo "</div>";
 			}
