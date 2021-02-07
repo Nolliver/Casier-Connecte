@@ -36,7 +36,9 @@
 									$sous_categ = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 									if (count($sous_categ) == 0){
-										echo "<ul><li><h3>Vide</h3></li></ul>";
+										echo "<div class='col-12'>";
+											echo "<ul><li><h3>Vide</h3></li></ul>";
+										echo "</div>";
 									}else{
 										foreach ($sous_categ as $key => $value) {
 											$id_sous_categ = $value['id_sous_categ'];
