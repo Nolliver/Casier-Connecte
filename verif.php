@@ -83,7 +83,7 @@
 													echo "<li><h3>".$prod[0]['lib_sous_categ']."</h3></li>";
 													echo "<table class='text-center table-hover table table-striped align-middle'>\n";
 														echo "<tr>\n";
-															echo "<th></th>\n";
+															echo "<th class='col-1'></th>\n";
 															foreach ($var as $value) {
 																echo "<th>".$nom_col[$value]."</th>\n";
 															}
@@ -92,7 +92,7 @@
 
 														foreach ($prod as $ligne) {
 															echo "<tr>\n";
-															echo"<td class='col-1'><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
+															echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
 															foreach ($var as $value) {
 																$val = stristr($ligne[$value], '-')?stristr($ligne[$value], '-', true).'&shy;'.stristr($ligne[$value], '-'):$ligne[$value];
 																echo "<td>".$val."</td>\n";

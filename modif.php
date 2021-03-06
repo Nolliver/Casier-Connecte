@@ -193,11 +193,11 @@
 								echo "<div class='table-responsive-lg col-10'>\n";
 									echo "<table class='text-center table-hover table table-striped align-middle'>\n";
 										echo "<tr>\n";
-											echo "<th></th>\n";
+											echo "<th class='col-1'></th>\n";
 											foreach ($var as $value) {
 												echo "<th>".$nom_col[$value]."</th>\n";
 											}
-											echo "<th>Quantité</th><th></th><th></th>\n";
+											echo "<th class='col-1'>Quantité</th><th class='col-1'></th><th class='col-1'></th>\n";
 										echo "</tr>\n";
 
 										foreach ($result as $ligne) {
