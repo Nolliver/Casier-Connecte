@@ -37,7 +37,7 @@
 
 									if (count($sous_categ) == 0){
 										echo "<div class='col-12'>";
-											echo "<ul><li><h3>Vide</h3></li></ul>";
+											echo "<ul><li><h3>(Vide)</h3></li></ul>";
 										echo "</div>";
 									}else{
 										foreach ($sous_categ as $key => $value) {
@@ -92,7 +92,7 @@
 
 														foreach ($prod as $ligne) {
 															echo "<tr>\n";
-															echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
+															echo"<td class='col-1'><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
 															foreach ($var as $value) {
 																$val = stristr($ligne[$value], '-')?stristr($ligne[$value], '-', true).'&shy;'.stristr($ligne[$value], '-'):$ligne[$value];
 																echo "<td>".$val."</td>\n";

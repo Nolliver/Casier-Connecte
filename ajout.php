@@ -28,16 +28,16 @@
 					$sous_categ = $_POST['sous_categorie'];
 				}
 
-				echo "<div class='row col-md-12 mb-5'>\n";
-					echo "<h1 class='text-center col-md-12 display-4'>Ajout dans la base de données</h1>\n";
+				echo "<div class='row col-12 mb-5'>\n";
+					echo "<h1 class='text-center col-12 display-4'>Ajout dans la base de données</h1>\n";
 				echo "</div>\n";
 				
 				echo "<div class='row'>\n";
-					echo "<form method='POST' action='ajout.php' class='form offset-md-2 col-md-8' name='ajout'>\n";
+					echo "<form method='POST' action='ajout.php' class='offset-2 col-8' name='ajout'>\n";
 
-						echo "<div class='form-row'>\n";
+						echo "<div class='row'>\n";
 							echo "<div class='form-group col-md-12'>\n";
-								echo "<label>Categorie:</label>\n";
+								echo "<label class='mt- form-label'>Categorie:</label>\n";
 								echo "<select name='Table' name='Table' class='form-control' onchange='submit()'>\n";
 									echo "<option value=''>------- Choisissez une catégorie -------</option>\n";
 									echo "<option value='quincaillerie' ".($table == 'quincaillerie' ? 'selected' : '').">Quincaillerie</option>\n";
@@ -50,9 +50,9 @@
 
 						if ($table <> ""){
 							$table = $_POST['Table'];
-							echo "<div class='form-row'>\n";
+							echo "<div class='row'>\n";
 								echo "<div class='form-group ".($sous_categ == 'autre' ? 'col-md-6' : 'col-md-12')."'>\n";
-									echo "<label>Sous-categorie:</label>\n";
+									echo "<label class='mt- form-label'>Sous-categorie:</label>\n";
 									echo "<select name='sous_categorie' name='sous_categorie' class='form-control' onchange='submit()'>\n";
 										echo "<option value=''>------- Choisissez une catégorie -------</option>";
 
@@ -75,7 +75,7 @@
 								
 								if ($sous_categ == 'autre') {
 									echo "<div class='form-group col-md-6'>\n";
-										echo "<label>Autre </label>\n";
+										echo "<label class='mt- form-label'>Autre </label>\n";
 										echo "<input type='text' name='autre' class='form-control' required>\n";
 									echo "</div>\n";
 								}
@@ -111,9 +111,9 @@
 									foreach ($var as $key => $value) {
 										$sql = 'SELECT DISTINCT '.$table.'.'.$value.' from ('.$table.' inner join produits on '.$table.'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$sous_categ.';';
 
-										echo "<div class='form-row'>\n";
+										echo "<div class='row'>\n";
 											echo "<div class='form-group col-md-12'>\n";
-												echo "<label for='".$value."'>".$value.":</label>\n";
+												echo "<label class='mt- form-label' for='".$value."'>".$value.":</label>\n";
 												echo "<input list='list_".$value."' type='text' name='".$value."' class='form-control'>\n";
 												echo "<datalist id='list_".$value."'>\n";
 													foreach ($bdd -> query($sql) as $ligne) {
@@ -125,9 +125,9 @@
 									}
 								
 
-								echo "<div class='form-row'>\n";
+								echo "<div class='row'>\n";
 									echo "<div class='form-group col-md-6'>\n";
-										echo "<label>Casier: </label>\n";
+										echo "<label class='mt- form-label'>Casier: </label>\n";
 										echo "<select name='casier' name='casier' class='form-control'>\n";
 												$sql='SELECT distinct id_casier FROM casier order by id_casier;';
 
@@ -139,25 +139,27 @@
 
 
 									echo "<div class='form-group col-md-6'>\n";
-										echo "<label for='tiroir'>Tiroir:</label>\n";
+										echo "<label class='mt- form-label' for='tiroir'>Tiroir:</label>\n";
 											echo "<input type='text' name='tiroir' class='form-control' required>\n";
 									echo "</div>\n";
 								echo "</div>\n";
 
-								echo "<div class='form-row'>\n";
+								echo "<div class='row'>\n";
 									echo "<div class='form-group col-md-12'>\n";
-										echo "<label for='quantite'>Quantité:</label>\n";
+										echo "<label class='mt- form-label' for='quantite'>Quantité:</label>\n";
 										echo "<input type='text' name='quantite' class='form-control' required>\n";
 									echo "</div>";
 								echo "</div>\n";
 							} 
 						}
 
-						echo "<div class='form-row'>\n";
-							echo "<a role='button' href='index.php' class='form-control ".($sous_categ == '' ? 'col-md-12' : 'col-md-5')." btn btn-outline-danger'>Abandonner</a>\n";
-							if ($sous_categ <> '') {
-								echo "<input type='submit' value='Ajouter' name='btn_ajout' class='form-control btn btn-outline-success offset-md-2 col-md-5'>\n";
-							}
+						echo "<div class='row mt-3'>\n";
+							echo "<div class='col'>\n";
+								echo "<a role='button' href='index.php' class='form-control btn btn-outline-danger'>Abandonner</a>\n";
+							echo "</div>";
+							echo "<div class='col'>\n";
+									echo "<input type='submit' value='Ajouter' name='btn_ajout' class='form-control btn btn-outline-success ".($sous_categ <> ''?"" :"disabled")."'>\n";
+							echo "</div>";
 						echo "</div>\n";
 					echo "</form>\n";
 				echo "</div>\n";
