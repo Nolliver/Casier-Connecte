@@ -57,7 +57,7 @@
 			exit;
 		}
 
-		echo "<h1> Suppression réussis ! </h1>";
+		echo "<h1> Suppression réussie ! </h1>";
 		header("Refresh:1 ;url=".$_SERVER["HTTP_REFERER"]);
 	?>
 </body>
