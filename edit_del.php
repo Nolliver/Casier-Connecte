@@ -198,7 +198,7 @@
 											foreach ($var as $value) {
 												echo "<th>".$nom_col[$value]."</th>\n";
 											}
-											echo "<th class='col-1'>Quantité</th><th class='col-1'></th><th class='col-1'></th>\n";
+											echo "<th class='col-1'>Quantité</th><th class='col-1'>Emplacement</th><th class='col-1'></th><th class='col-1'></th>\n";
 										echo "</tr>\n";
 
 										foreach ($result as $ligne) {
@@ -208,7 +208,11 @@
 												$val = stristr($ligne[$value], '-')?stristr($ligne[$value], '-', true).'&shy;'.stristr($ligne[$value], '-'):$ligne[$value];
 												echo "<td>".$val."</td>\n";
 											}
-											echo"<td>".$ligne['quantite']."</td><td class='align-middle text-center' ><a class='btn btn-warning' role='button' href='edit.php?id=".$ligne['id_produit']."&table=".$_GET['table']."&id_sous_categ=".$_GET['sous_categorie']."'>Modifier</a></td><td class='align-middle text-center' ><a class='btn btn-danger' role='button' href='delete.php?id=".$ligne['id_produit']."&table=".$_GET['table']."&id_sous_categ=".$_GET['sous_categorie']."'>Supprimer</a></td>\n";
+
+											echo"<td>".$ligne['quantite']."</td>";
+											echo "<td>".$ligne['id_casier']."-".$ligne['num']."</td>";
+											echo "<td class='align-middle text-center'><a class='btn btn-warning' role='button' href='edit.php?id=".$ligne['id_produit']."&table=".$_GET['table']."&id_sous_categ=".$_GET['sous_categorie']."'>Modifier</a></td>";
+											echo "<td class='align-middle text-center' ><a class='btn btn-danger' role='button' href='delete.php?id=".$ligne['id_produit']."&table=".$_GET['table']."&id_sous_categ=".$_GET['sous_categorie']."'>Supprimer</a></td>\n";
 											echo "</tr>\n";
 										}
 									echo "</table>\n";
