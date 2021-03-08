@@ -26,31 +26,46 @@
 
 				echo "<div class='row'>\n";
 					echo "<form method='POST' action='edit.php' class='offset-2 col-8' name='edit'>\n";
-          $sql = "SELECT * FROM (produits as p inner join $table as t on p.id_produit = t.id_produit) inner join emplacement as e on e.id_produit = p.id_produit WHERE p.id_produit = $id";
+						// Récupération des noms de colonnes de la catégorie choisie
+							$sql = 'SHOW COLUMNS FROM '.$table.';';
 
-						//Recherche des colonnes n'étant pas entièrement vide
+							$var_categ = array();
+							foreach ($bdd -> query($sql) as $ligne) {
+								array_push($var_categ, $ligne['Field']);
+							}
+							unset($var_categ[array_search('id_produit', $var_categ)]);
+
+						//Recherche des colonnes n'étant pas entièrement vide pour la sous catégorie
+							$sql = "SELECT * FROM (produits as p inner join $table as t on p.id_produit = t.id_produit) inner join sous_categorie as sc on sc.id_sous_categ = p.id_sous_categ WHERE sc.id_sous_categ = $id_sous_categ";
 							$result = $bdd -> query($sql);
 							$result = $result->fetchAll(PDO::FETCH_ASSOC);
 							$var_not_null = notemptycol($result);
 
-              print_r($var_not_null);
-							print_r($result);
 
-						foreach ($var as $key => $value) {
-							$sql = 'SELECT DISTINCT '.$table.'.'.$value.' from ('.$table.' inner join produits on '.$table.'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$sous_categ.';';
+						//On ne garde que l'intersection des variables se trouvant dans la liste des variables de la catégorie choisie, et dans la liste des variables non entièrement vide
+							$var = array_intersect($var_categ, $var_not_null);
 
-							echo "<div class='row'>\n";
-								echo "<div class='form-group col-md-12'>\n";
-									echo "<label class='mt- form-label' for='".$value."'>".$value.":</label>\n";
-									echo "<input list='list_".$value."' type='text' name='".$value."' class='form-control'>\n";
-									echo "<datalist id='list_".$value."'>\n";
-										foreach ($bdd -> query($sql) as $ligne) {
-											echo "<option value='".$ligne[$value]."'>\n";
-										}
-									echo "</datalist>\n";
+						// Récupération des infos de l'objet à modifier
+							$sql = "SELECT * FROM (produits as p inner join $table as t on p.id_produit = t.id_produit) inner join emplacement as e on e.id_produit = p.id_produit WHERE p.id_produit = $id";
+							$result = $bdd -> query($sql);
+							$prod = $result->fetchAll(PDO::FETCH_ASSOC);
+							$prod = $prod[0];
+
+							foreach ($var as $key => $value) {
+								$sql = 'SELECT DISTINCT '.$table.'.'.$value.' from ('.$table.' inner join produits on '.$table.'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ where sous_categorie.id_sous_categ ='.$id_sous_categ.';';
+
+								echo "<div class='row'>\n";
+									echo "<div class='form-group col-md-12'>\n";
+										echo "<label class='mt- form-label' for='".$value."'>".$nom_col[$value].":</label>\n";
+										echo "<input list='list_".$value."' type='text' name='".$value."' value='".$prod[$value]."' class='form-control'>\n";
+										echo "<datalist id='list_".$value."'>\n";
+											foreach ($bdd -> query($sql) as $ligne) {
+												echo "<option value='".$ligne[$value]."'>\n";
+											}
+										echo "</datalist>\n";
+									echo "</div>\n";
 								echo "</div>\n";
-							echo "</div>\n";
-						}
+							}
 
 
 						echo "<div class='row'>\n";
@@ -60,7 +75,7 @@
 										$sql='SELECT distinct id_casier FROM casier order by id_casier;';
 
 										foreach ($bdd -> query($sql) as $ligne) {
-											echo "<option value='".$ligne['id_casier']."'>".$ligne['id_casier']."</option>\n";
+											echo "<option value='".$ligne['id_casier']."' ".($ligne['id_casier']==$prod['id_casier']?"selected":"").">".$ligne['id_casier']."</option>\n";
 										}
 								echo "</select>\n";
 							echo "</div>\n";
