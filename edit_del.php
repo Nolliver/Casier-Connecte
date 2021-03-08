@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php	
+<?php
 	if (isset($_GET['table']) and isset($_GET['sous_categorie'])){
 		echo "<html lang='fr'>\n";
 	} else {
@@ -24,7 +24,8 @@
 	<h1 class="d-none d-lg-block d-xl-none">LG</h1>
 	<h1 class="d-none d-xl-block">XL</h1>
 
-			<?php 
+
+			<?php
 
 			include("connexion.php");
 			include("fonction.php");
@@ -34,7 +35,7 @@
 						$categ = array(
 							array('nom_table' => "elements_mecaniques", 'Titre' => "Elements mecaniques" , 'nom_photo' => "elements_mecaniques.jpg"),
 							array('nom_table' => "composants_electroniques", 'Titre' => "Composants electroniques" , 'nom_photo' => "composants_electroniques.jpg"),
-							array('nom_table' => "outils", 'Titre' => "Outils" , 'nom_photo' => "outils.jpg"), 
+							array('nom_table' => "outils", 'Titre' => "Outils" , 'nom_photo' => "outils.jpg"),
 							array('nom_table' => "quincaillerie", 'Titre' => 'Quincaillerie' , 'nom_photo' => 'quincaillerie.jpg')
 						);
 
@@ -44,7 +45,7 @@
 								echo "<div class='row my-5'>\n";
 									foreach ($categ as $ligne) {
 										echo "<figure class='col-sm-6 col-md-3'>\n";
-											echo "<a class='text-center d-block' href='modif.php?table=".$ligne['nom_table']."'>\n";
+											echo "<a class='text-center d-block' href='edit_del.php?table=".$ligne['nom_table']."'>\n";
 												echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_photo']."'>\n";
 												echo "<figcaption class='mx-auto'>".$ligne['Titre']."</figcaption>\n";
 											echo "</a>\n";
@@ -119,7 +120,7 @@
 							$result = $bdd -> query($sql.$filtre.' Order by 2, 3;');
 							$result = $result->fetchAll(PDO::FETCH_ASSOC);
 						}
-							
+
 					// Affichage des produits
 						echo "<div class = container-fluid>\n";
 							echo "<div class='row col-12 p-0 m-0'>\n";
@@ -174,7 +175,7 @@
 									echo "</form>\n";
 
 									//Affichage des filtres selectionnés
-									echo "<div class='col-12 my-3 px-0'>";	
+									echo "<div class='col-12 my-3 px-0'>";
 										echo "<div class='card mt-5'>";
 											echo "<div class='card-body px-0 py-3 w-auto'>";
 												echo "<ul>\n";
@@ -185,9 +186,9 @@
 										echo "</div>\n";
 									echo "</div>\n";
 								echo "</div>\n";
-								
 
-								
+
+
 
 							//Remplissage du tableau
 								echo "<div class='table-responsive-lg col-10'>\n";
@@ -207,7 +208,7 @@
 												$val = stristr($ligne[$value], '-')?stristr($ligne[$value], '-', true).'&shy;'.stristr($ligne[$value], '-'):$ligne[$value];
 												echo "<td>".$val."</td>\n";
 											}
-											echo"<td>".$ligne['quantite']."</td><td class='align-middle text-center' ><a class='btn btn-warning' role='button' href='form_modif.php'>Modifier</a></td><td class='align-middle text-center' ><a class='btn btn-danger' role='button' href='delete.php?id=".$ligne['id_produit']."&table=".$_GET['table']."&id_sous_categ=".$_GET['sous_categorie']."'>Supprimer</a></td>\n";
+											echo"<td>".$ligne['quantite']."</td><td class='align-middle text-center' ><a class='btn btn-warning' role='button' href='edit.php?id=".$ligne['id_produit']."&table=".$_GET['table']."&id_sous_categ=".$_GET['sous_categorie']."'>Modifier</a></td><td class='align-middle text-center' ><a class='btn btn-danger' role='button' href='delete.php?id=".$ligne['id_produit']."&table=".$_GET['table']."&id_sous_categ=".$_GET['sous_categorie']."'>Supprimer</a></td>\n";
 											echo "</tr>\n";
 										}
 									echo "</table>\n";
@@ -216,7 +217,7 @@
 						echo "</div>\n";
 						echo $js_filtre;
 					}
-	 			
+
 			 ?>
 			</div>
 				<a role="button" href="index.php" class="offset-3 col-6 btn btn-outline-info my-5">Retour à l'acceuil</a>
