@@ -38,7 +38,7 @@
 			<div class="collapse navbar-collapse" id="navbarScroll">
 				<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="index.php">Acceuil</a>
+						<a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="ajout.php">Ajouter</a>
@@ -82,12 +82,6 @@
 		</div>
 	</nav>
 
-	<h1 class="d-block d-sm-none">XS</h1>
-	<h1 class="d-none d-sm-block d-md-none">SM</h1>
-	<h1 class="d-none d-md-block d-lg-none">MD</h1>
-	<h1 class="d-none d-lg-block d-xl-none">LG</h1>
-	<h1 class="d-none d-xl-block">XL</h1>
-
 			<?php
 
 			include("connexion.php");
@@ -104,6 +98,9 @@
 						);
 
 					// Affichage des catégories
+						echo "<div class='row col-12 mb-5'>\n";
+							echo "<h1 class='text-center col-12 display-4'>Recherche</h1>\n";
+						echo "</div>\n";
 						echo "<div class='container h-100 justify-content-center d-flex mb-5'>\n";
 							echo "<div class='my-auto col-12'>\n";
 								echo "<div class='row my-5'>\n";
@@ -127,6 +124,9 @@
 						$sql = 'SELECT distinct sous_categorie.id_sous_categ, sous_categorie.lib_sous_categ, sous_categorie.nom_photo from ('.$_GET['table'].' inner join produits on '.$_GET['table'].'.id_produit = produits.id_produit) inner join sous_categorie on produits.id_sous_categ = sous_categorie.id_sous_categ order by sous_categorie.lib_sous_categ;';
 
 					// Affichage des sous-catégories
+						echo "<div class='row col-12 mb-5'>\n";
+							echo "<h1 class='text-center col-12 display-4'>Recherche</h1>\n";
+						echo "</div>\n";
 						echo "<div class='container h-100 justify-content-center d-flex mb-5'>\n";
 							echo "<div class='my-auto col-12'>\n";
 								echo "<div class='row align-items-center my-5'>\n";
@@ -256,7 +256,7 @@
 
 							//Remplissage du tableau
 								echo "<div class='table-responsive-lg col-10'>\n";
-									echo "<table class='text-center table-hover table table-striped align-middle'>\n";
+									echo "<table class='text-center table-hover table table-striped align-middle mt-5'>\n";
 										echo "<tr>\n";
 											echo "<th class='col-1'></th>\n";
 											foreach ($var as $value) {
@@ -283,9 +283,6 @@
 					}
 
 			 ?>
-			</div>
-				<a role="button" href="index.php" class="offset-3 col-6 btn btn-outline-info my-5">Retour à l'acceuil</a>
-			</div>
 
 	</div>
 </body>
