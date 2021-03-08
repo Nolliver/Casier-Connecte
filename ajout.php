@@ -175,7 +175,7 @@
 
 										echo "<div class='row'>\n";
 											echo "<div class='form-group col-md-12'>\n";
-												echo "<label class='mt- form-label' for='".$value."'>".$value.":</label>\n";
+												echo "<label class='mt- form-label' for='".$value."'>".$nom_col[$value].":</label>\n";
 												echo "<input list='list_".$value."' type='text' name='".$value."' class='form-control'>\n";
 												echo "<datalist id='list_".$value."'>\n";
 													foreach ($bdd -> query($sql) as $ligne) {
