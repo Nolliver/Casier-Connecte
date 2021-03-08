@@ -143,7 +143,7 @@
 
 				//Modification dans la table emplacement
 					$sql = "UPDATE emplacement SET num = $tiroir, id_casier = '$casier', quantite = $quantite WHERE id_produit = $id";
-					echo $sql;
+
 					$req = $bdd -> prepare($sql);
 					$res = $req -> execute();
 					if (!$res) {
@@ -159,7 +159,6 @@
 						$sql = $sql."$key = '$value', ";
 					}
 					$sql = substr($sql, 0, -2)."WHERE id_produit = $id;";
-					echo $sql;
 
 					$req = $bdd -> prepare($sql);
 					$res = $req -> execute();
@@ -171,7 +170,7 @@
 						exit;
 					}
 
-					echo "<h1> Modification réussis ! </h1>";
+					echo "<h1> Modification réussie ! </h1>";
 					header("Refresh:1 ;url=edit_del.php?table=$table&sous_categorie=$id_sous_categ");
 			}
 		?>

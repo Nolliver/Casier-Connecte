@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="container mb-5">
-		<?php 
+		<?php
 			include("connexion.php");
 			include("fonction.php");
 
@@ -31,7 +31,7 @@
 				echo "<div class='row col-12 mb-5'>\n";
 					echo "<h1 class='text-center col-12 display-4'>Ajout dans la base de données</h1>\n";
 				echo "</div>\n";
-				
+
 				echo "<div class='row'>\n";
 					echo "<form method='POST' action='ajout.php' class='offset-2 col-8' name='ajout'>\n";
 
@@ -72,7 +72,7 @@
 
 									echo "</select>\n";
 								echo "</div>\n";
-								
+
 								if ($sous_categ == 'autre') {
 									echo "<div class='form-group col-md-6'>\n";
 										echo "<label class='mt- form-label'>Autre </label>\n";
@@ -118,12 +118,12 @@
 												echo "<datalist id='list_".$value."'>\n";
 													foreach ($bdd -> query($sql) as $ligne) {
 														echo "<option value='".$ligne[$value]."'>\n";
-													}	
+													}
 												echo "</datalist>\n";
 											echo "</div>\n";
 										echo "</div>\n";
 									}
-								
+
 
 								echo "<div class='row'>\n";
 									echo "<div class='form-group col-md-6'>\n";
@@ -150,7 +150,7 @@
 										echo "<input type='text' name='quantite' class='form-control' required>\n";
 									echo "</div>";
 								echo "</div>\n";
-							} 
+							}
 						}
 
 						echo "<div class='row mt-3'>\n";
@@ -224,7 +224,7 @@
 						echo "La quantité doit être un entier non nul";
 						exit;
 					}
-					
+
 
 					$sql = 'SHOW COLUMNS FROM '.$table.';';
 					$value_table=array();
@@ -238,7 +238,7 @@
 
 							}*/
 							$value_table[$ligne['Field']] = $_POST[$ligne['Field']];
-							
+
 						}
 					}
 
@@ -284,7 +284,7 @@
 					}
 
 				//Ajout dans la table de la catégorie choisie
-					$sql = "INSERT INTO ".$table." (id_produit, "; 
+					$sql = "INSERT INTO ".$table." (id_produit, ";
 					foreach ($value_table as $key => $value) {
 						$sql = $sql.$key.", ";
 					}
@@ -305,7 +305,7 @@
 						exit;
 					}
 
-					echo "<h1> Ajout réussis ! </h1>";
+					echo "<h1> Ajout réussi ! </h1>";
 					header("Refresh:1 ;url=ajout.php");
 			}
 		?>
