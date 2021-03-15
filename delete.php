@@ -6,6 +6,58 @@
 	<title>Suppression</title>
 </head>
 <body>
+  <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid justify-content-end">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarScroll">
+				<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="ajout.php">Ajouter</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="recherche.php" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Rechercher
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+							<li><a class="dropdown-item" href="recherche.php">Rechercher</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="recherche.php?table=quincaillerie">Quincaillerie</a></li>
+							<li><a class="dropdown-item" href="recherche.php?table=outils">Outils</a></li>
+							<li><a class="dropdown-item" href="recherche.php?table=composants_electroniques">Composants éléctroniques</a></li>
+							<li><a class="dropdown-item" href="recherche.php?table=elements_mecaniques">Elements mécaniques</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="edit_del.php" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Modifier/Supprimer
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+							<li><a class="dropdown-item" href='edit_del.php'>Modifier/Supprimer</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href='edit_del.php?table=quincaillerie'>Quincaillerie</a></li>
+							<li><a class="dropdown-item" href="edit_del.php?table=outils">Outils</a></li>
+							<li><a class="dropdown-item" href="edit_del.php?table=composants_electroniques">Composants éléctroniques</a></li>
+							<li><a class="dropdown-item" href="edit_del.php?table=elements_mecaniques">Elements mécaniques</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href=verif.php>Vérification</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mx-auto order-0">
+				<a class="navbar-brand mx-auto" href="#">Casier connecté</a>
+			</div>
+			<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+			</div>
+		</div>
+	</nav>
+  
 	<?php
 		include("connexion.php");
 		include("fonction.php");
