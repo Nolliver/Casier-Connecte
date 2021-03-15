@@ -276,14 +276,16 @@ if (isset($_GET['table']) and isset($_GET['sous_categorie'])) {
                         echo $ligne['quantite'];
                       echo"</td>";
                       echo"<td>";
-                        echo "<form method='POST' action='#'>";
-                          echo "<select>";
+                        echo "<form method='POST' action='#' class='row'>";
+                          echo "<select class='col-5 mt-3 h-50'>";
                             for ($i=1; $i < 11; $i++) {
                               echo "<option>$i</option>";
                             }
                           echo "</select>";
-                          echo "<input type='submit' id='add' value='Ajouter'>";
-                          echo "<input type='submit' id='remove' value='Enlever'>";
+                          echo "<div class='col-7'>";
+                            echo "<input type='submit' id='add' value='Ajouter'>";
+                            echo "<input type='submit' id='remove' value='Enlever'>";
+                          echo "</div>";
                         echo "</form>";
                       echo "</td>";
 
