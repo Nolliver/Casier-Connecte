@@ -255,7 +255,7 @@
 
 
 							//Remplissage du tableau
-								echo "<div class='table-responsive-lg col-10'>\n";
+								echo "<div class='table-responsive-lg col-lg-10'>\n";
 									echo "<table class='text-center table-hover table table-striped align-middle mt-5'>\n";
 										echo "<tr>\n";
 											echo "<th class='col-1'></th>\n";

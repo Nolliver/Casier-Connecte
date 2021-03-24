@@ -257,7 +257,7 @@ if (isset($_GET['table']) and isset($_GET['sous_categorie'])) {
 
 
   						//Remplissage du tableau
-  							echo "<div class='table-responsive-lg col-10'>\n";
+  							echo "<div class='table-responsive-lg col-lg-10'>\n";
   								echo "<table class='text-center table-hover table table-striped align-middle mt-5'>\n";
   									echo "<tr>\n";
   										echo "<th class='col-1'></th>\n";
@@ -279,16 +279,17 @@ if (isset($_GET['table']) and isset($_GET['sous_categorie'])) {
                         echo $ligne['quantite'];
                       echo"</td>";
                       echo"<td>";
-                        echo "<form method='POST' action='#' class='row'>";
-                          echo "<select class='col-5 mt-3 h-50'>";
+                        echo "<form method='POST' action='qte.php' class='row'>";
+                          echo "<select class='col-5 mt-3 h-50' name='qte'>";
                             for ($i=1; $i < 11; $i++) {
                               echo "<option>$i</option>";
                             }
                           echo "</select>";
                           echo "<div class='col-7'>";
-                            echo "<input type='submit' id='add' value='Ajouter'>";
-                            echo "<input type='submit' id='remove' value='Enlever'>";
+                            echo "<input type='submit' name='add' value='Ajouter'>";
+                            echo "<input type='submit' name='remove' value='Enlever'>";
                           echo "</div>";
+                          echo "<input type='hidden' name='id' value='".$ligne['id_produit']."'>";
                         echo "</form>";
                       echo "</td>";
 
