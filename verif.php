@@ -159,8 +159,9 @@
 														echo "</tr>\n";
 
 														foreach ($prod as $ligne) {
+                              $nom_photo = file_exists('icone500px500px/'.$ligne['photo_prod'])? $ligne['photo_prod'] : 'sans photo.jpg';
 															echo "<tr>\n";
-															echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
+															echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$nom_photo."'></td>\n";
 															foreach ($var as $value) {
 																$val = stristr($ligne[$value], '-')?stristr($ligne[$value], '-', true).'&shy;'.stristr($ligne[$value], '-'):$ligne[$value];
 																echo "<td>".$val."</td>\n";

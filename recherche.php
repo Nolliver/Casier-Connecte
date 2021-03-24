@@ -107,7 +107,8 @@ if (isset($_GET['table']) and isset($_GET['sous_categorie'])) {
   								foreach ($categ as $ligne) {
   									echo "<figure class='col-sm-6 col-md-3'>\n";
   										echo "<a class='text-center d-block' href='recherche.php?table=".$ligne['nom_table']."'>\n";
-  											echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$ligne['nom_photo']."'>\n";
+                        $nom_photo = file_exists('icone500px500px/'.$ligne['nom_photo'])? $ligne['nom_photo'] : 'sans photo.jpg';
+  											echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/".$nom_photo."'>\n";
   											echo "<figcaption class='mx-auto'>".$ligne['Titre']."</figcaption>\n";
   										echo "</a>\n";
   									echo "</figure>\n";
@@ -133,7 +134,8 @@ if (isset($_GET['table']) and isset($_GET['sous_categorie'])) {
   								foreach ($bdd -> query($sql) as $ligne) {
   									echo "<figure class='col-sm-6 col-md-3'>\n";
   										echo "<a class='text-center d-block' href='".$_SERVER['REQUEST_URI']."&sous_categorie=".$ligne['id_sous_categ']."'>\n";
-  											echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sous_categ/".$ligne['nom_photo']."'>\n";
+                        $nom_photo = file_exists('icone500px500px/sous_categ/'.$ligne['nom_photo'])? $ligne['nom_photo'] : 'sans photo.jpg';
+  											echo "<img style='width: 12.5em ' class='mx-auto rounded img-thumbnail d-block' src='icone500px500px/sous_categ/".$nom_photo."'>\n";
   											echo "<figcaption class='mx-auto'>".$ligne['lib_sous_categ']."</figcaption>\n";
   										echo "</a>\n";
   									echo "</figure>\n";
@@ -267,7 +269,8 @@ if (isset($_GET['table']) and isset($_GET['sous_categorie'])) {
 
   									foreach ($result as $ligne) {
   										echo "<tr>\n";
-  										echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$ligne['photo_prod']."'></td>\n";
+                      $nom_photo = file_exists('icone500px500px/'.$ligne['photo_prod'])? $ligne['photo_prod'] : 'sans photo.jpg';
+  										echo"<td><img class='rounded border border-secondary' src='icone500px500px/".$nom_photo."'></td>\n";
   										foreach ($var as $value) {
   											$val = stristr($ligne[$value], '-')?stristr($ligne[$value], '-', true).'&shy;'.stristr($ligne[$value], '-'):$ligne[$value];
   											echo "<td>".$val."</td>\n";
